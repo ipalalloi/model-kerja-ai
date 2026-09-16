@@ -1,0 +1,20 @@
+﻿# System & OS Junk
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Environment Credentials
+.env
+.env.local
+.env.production
+.env.development
+
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+# Vendor & Dependencies
+node_modules/
+vendor/

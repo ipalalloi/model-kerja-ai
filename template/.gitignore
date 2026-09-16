@@ -1,0 +1,14 @@
+.env
+.cursorrules
+uploads/
+*.old
+*.sql
+*.csv
+dist_upload.zip
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+vendor/
+node_modules/
+logs/
