@@ -86,6 +86,23 @@ model-kerja-ai/
 
 ---
 
+
+---
+
+## ⚡ PiGO Quick Shortcuts (Perintah Pintasan Semi-Otonom)
+
+Agar pengembang tidak perlu mengetik atau menghafal prompt panjang, PiGO Framework menyediakan **Pintasan Cepat (Command Shortcuts)**. Cukup ketik kata kunci 1-2 kata ini di chat:
+
+| Pintasan (*Shortcut*) | Aksi Otonom AI yang Dijalankan Otomatis |
+|---|---|
+| **pigo run** / **lanjut** | Membaca `working.md`, melanjutkan tugas `<in_progress>`, mengetes kode, dan mengupdate state secara mandiri. |
+| **pigo fix [isu/error]** | Mencari sumber error, memperbaiki kode dengan *Zero-Regression*, dan menguji ulang sampai tuntas. |
+| **pigo pack** | Mengemas rilis live bersih via `build_upload.ps1`, mengambil SHA256, dan mencatatnya ke `RELEASE_MANIFEST.md`. |
+| **pigo test** | Menguji sintaks (`php -l`), memeriksa inisialisasi variabel, dan memverifikasi proteksi `try-catch`. |
+| **pigo sync** | Mengaudit berkas yang baru diubah dan menyinkronkan status memori `working.md`. |
+| **pigo audit** | Memeriksa kepatuhan 6 pilar (keamanan upload MIME, `.htaccess`, sesi, OWASP). |
+
+---
 ## 🚀 Cara Mengadopsi PiGO Framework
 
 ### 1. Inisialisasi Proyek Baru
@@ -102,3 +119,4 @@ Setiap kali Anda membuka proyek lama atau baru yang belum memiliki `.agents/AGEN
 
 ## 📜 Lisensi & Kontribusi
 PiGO Framework bersifat terbuka untuk pembelajaran, adopsi, dan standardisasi komunitas pengembang AI. Diskusi dan kontribusi terbuka melalui *Pull Requests* atau *Issues*.
+
