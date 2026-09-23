@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Panduan Visual: Memulai Proyek Baru PiGO Framework</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom scrollbar & badge styling */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(150, 150, 150, 0.3); border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-transparent text-[var(--foreground)] antialiased p-3 sm:p-5">
+
+  <div class="max-w-4xl mx-auto space-y-6">
+
+    <!-- Header Banner -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm relative overflow-hidden">
+      <div class="absolute -right-8 -top-8 w-36 h-36 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-md shadow-blue-500/20">
+          π
+        </div>
+        <div>
+          <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">
+            PiGO Framework v10.0
+          </span>
+          <h1 class="text-xl sm:text-2xl font-bold text-[var(--foreground)] mt-1">
+            Panduan Visual Memulai Proyek Baru
+          </h1>
+          <p class="text-sm text-[var(--muted-foreground)]">
+            Alur praktis inisiasi proyek terstandar, semi-otonom, dan bebas hambatan izin (Zero-Friction).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 1: Lokasi Folder -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold text-sm">
+          1
+        </span>
+        <h2 class="text-base font-semibold text-[var(--foreground)]">
+          Tentukan Lokasi Folder Proyek
+        </h2>
+      </div>
+
+      <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
+        Seluruh proyek web diletakkan di direktori utama web server lokal agar langsung terhubung dengan Apache/XAMPP dan database MySQL:
+      </p>
+
+      <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-4 font-mono text-xs sm:text-sm text-blue-400 flex items-center justify-between overflow-x-auto">
+        <span>📁 D:\Data_web\&lt;nama_projek_baru&gt;\</span>
+        <span class="text-[10px] uppercase font-sans font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          Standard Webroot
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-xs">
+        <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--background)]">
+          <p class="text-[var(--muted-foreground)]">Contoh 1</p>
+          <p class="font-semibold font-mono text-[var(--foreground)] mt-0.5">D:\Data_web\e_arsip</p>
+        </div>
+        <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--background)]">
+          <p class="text-[var(--muted-foreground)]">Contoh 2</p>
+          <p class="font-semibold font-mono text-[var(--foreground)] mt-0.5">D:\Data_web\klinik_app</p>
+        </div>
+        <div class="p-3 rounded-lg border border-[var(--border)] bg-[var(--background)]">
+          <p class="text-[var(--muted-foreground)]">Contoh 3</p>
+          <p class="font-semibold font-mono text-[var(--foreground)] mt-0.5">D:\Data_web\pos_retail</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Dua Pilihan Cara Memulai -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold text-sm">
+          2
+        </span>
+        <h2 class="text-base font-semibold text-[var(--foreground)]">
+          Pilih Cara Memulai di Antigravity
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <!-- Opsi A -->
+        <div class="border border-blue-500/30 bg-blue-500/[0.02] rounded-xl p-5 space-y-3 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-blue-500 uppercase tracking-wide">Cara A (Paling Cepat)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 font-semibold">1-Step Prompt</span>
+          </div>
+          <h3 class="text-sm font-semibold text-[var(--foreground)]">
+            Perintah Langsung di Chat
+          </h3>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Buka chat Antigravity, lalu salin/ketik prompt ini:
+          </p>
+          <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg p-3 text-xs font-mono text-[var(--foreground)] select-all leading-relaxed">
+            "Buat proyek baru bernama <span class="text-amber-400 font-bold">klinik_app</span> di <span class="text-amber-400 font-bold">D:\Data_web\klinik_app</span> dan inisialisasi PiGO Framework v10.0."
+          </div>
+          <p class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+            <span>✓</span> AI otomatis membuat folder dan mengekstrak template master.
+          </p>
+        </div>
+
+        <!-- Opsi B -->
+        <div class="border border-[var(--border)] bg-[var(--background)] rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-[var(--muted-foreground)] uppercase tracking-wide">Cara B (Folder Terbuka)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-zinc-500/10 text-[var(--muted-foreground)] font-semibold">Global Auto-Check</span>
+          </div>
+          <h3 class="text-sm font-semibold text-[var(--foreground)]">
+            Buka Folder Kosong & Ketik Shortcut
+          </h3>
+          <p class="text-xs text-[var(--muted-foreground)]">
+            Buka folder kosong via menu <em>Projects</em>, lalu ketik:
+          </p>
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-lg p-3 text-xs font-mono text-center text-blue-400 font-bold">
+            pigo init &nbsp;<span class="text-[var(--muted-foreground)] font-normal">atau</span>&nbsp; pigo run
+          </div>
+          <p class="text-[11px] text-[var(--muted-foreground)] flex items-center gap-1.5">
+            <span>ℹ️</span> Global Compliance Checker akan muncul: ketik <strong>"Ya"</strong> untuk konfirmasi setup.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Step 3: Hasil yang Otomatis Terpasang -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center font-bold text-sm">
+          3
+        </span>
+        <h2 class="text-base font-semibold text-[var(--foreground)]">
+          Hasil yang Otomatis Siap Pakai di Folder Proyek
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-blue-400 font-mono font-semibold">.agents/AGENTS.md</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Runtime rules PiGO v10 & 6 pilar kualitas.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-amber-400 font-mono font-semibold">.cursorrules</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Enforcer wajib baca aturan & memori.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-emerald-400 font-mono font-semibold">working.md</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Memori pelacak tugas & status proyek.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-purple-400 font-mono font-semibold">build_upload.ps1</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Script pembuat ZIP rilis live clean.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-rose-400 font-mono font-semibold">config/database.php</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Static loader aman dari overwrite.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-cyan-400 font-mono font-semibold">MIGRATION_LOG.md</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Ledger skema database resmi.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-orange-400 font-mono font-semibold">uploads/.htaccess</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Mematikan eksekusi PHP di folder upload.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="text-indigo-400 font-mono font-semibold">RELEASE_MANIFEST</div>
+          <p class="text-[11px] text-[var(--muted-foreground)]">Catatan SHA256 & rollback plan.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Step 4: Pintasan Kerja Setelah Proyek Dibuat -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-3">
+      <h2 class="text-base font-semibold text-[var(--foreground)] flex items-center gap-2">
+        <span>⚡</span> Langkah Selanjutnya: Cukup Pakai PiGO Shortcuts
+      </h2>
+      <p class="text-xs text-[var(--muted-foreground)]">
+        Setelah proyek terbentuk, Anda tidak perlu lagi mengetik prompt panjang:
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-blue-400 font-semibold">
+          pigo run <span class="text-[11px] font-sans font-normal text-[var(--muted-foreground)]">→ lanjut koding</span>
+        </span>
+        <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-emerald-400 font-semibold">
+          pigo pack <span class="text-[11px] font-sans font-normal text-[var(--muted-foreground)]">→ buat zip upload</span>
+        </span>
+        <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-amber-400 font-semibold">
+          pigo test <span class="text-[11px] font-sans font-normal text-[var(--muted-foreground)]">→ cek sintaks & error</span>
+        </span>
+        <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-purple-400 font-semibold">
+          pigo sync <span class="text-[11px] font-sans font-normal text-[var(--muted-foreground)]">→ sinkronkan working.md</span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
