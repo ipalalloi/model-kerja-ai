@@ -56,6 +56,8 @@ Dalam era kolaborasi pengembang dan AI, terdapat 5 masalah kritis klasik di lapa
 ```
 model-kerja-ai/
 ├── docs/
+│   ├── panduan_memulai_projek_baru.md      # Panduan inisiasi proyek baru (teks)
+│   ├── panduan_visual_projek_baru.html     # Panduan inisiasi proyek baru (visual interaktif)
 │   ├── panduan_penyusunan_model_kerja.md   # Panduan lengkap langkah penyusunan dari nol
 │   ├── kajian_model_kerja_v9.md            # Kajian arsitektur & temuan lapangan
 │   └── penetapan_model_kerja_v10.md        # Dokumen penetapan resmi standar PiGO v10.0
@@ -105,6 +107,10 @@ Agar pengembang tidak perlu mengetik atau menghafal prompt panjang, PiGO Framewo
 ---
 ## 🚀 Cara Mengadopsi PiGO Framework
 
+### 📖 Panduan Praktis & Visual Memulai Proyek Baru
+Untuk panduan langkah demi langkah yang sangat mudah diikuti:
+- 📄 **Panduan Teks Langkah Demi Langkah**: [docs/panduan_memulai_projek_baru.md](docs/panduan_memulai_projek_baru.md)
+- 🎨 **Panduan Visual Interaktif (HTML)**: [docs/panduan_visual_projek_baru.html](docs/panduan_visual_projek_baru.html)
 ### 1. Inisialisasi Proyek Baru
 Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali identitas PiGO v10.0 dan bekerja secara otonom tanpa gangguan popup persetujuan rutin.
 
@@ -119,4 +125,5 @@ Setiap kali Anda membuka proyek lama atau baru yang belum memiliki `.agents/AGEN
 
 ## 📜 Lisensi & Kontribusi
 PiGO Framework bersifat terbuka untuk pembelajaran, adopsi, dan standardisasi komunitas pengembang AI. Diskusi dan kontribusi terbuka melalui *Pull Requests* atau *Issues*.
+
 
