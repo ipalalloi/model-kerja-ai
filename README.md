@@ -1,5 +1,5 @@
 ﻿# 🚀 AI Working Model & Governance Framework
-> **Autonomous, Self-Healing, Strict Compliance & Zero-Regression AI Engineering Framework**
+> **Autonomous, Self-Healing, Strict Compliance, Zero-Friction & Zero-Regression AI Engineering Framework**
 
 Framework ini adalah pedoman arsitektur, tata kelola (*governance*), dan protokol kontinuitas bagi agen AI (Google Gemini, Claude, OpenAI, OpenRouter) dalam mengembangkan aplikasi web modern (PHP, JavaScript, MySQL/MariaDB, REST API, Mobile-Ready).
 
@@ -12,12 +12,13 @@ Banyak pengembang mengalami masalah berulang saat bekerja bersama AI:
 2. **Halusinasi Konfigurasi**: AI menimpa konfigurasi lokal atau server (`database.php`) hingga menyebabkan error 500.
 3. **Regresi Kode (*Breaking Changes*)**: Memperbaiki 1 bug kecil tetapi mematahkan 3 fitur utama lainnya.
 4. **Sampah Produksi**: Berkas percakapan, file backup manual (`*.old`), dan dump SQL ikut terunggah ke hosting live.
+5. **Kelelahan Konfirmasi (*Prompt Fatigue*)**: Terlalu sering diminta mengonfirmasi kueri baca atau perintah terminal rutin.
 
 Framework ini menyelesaikan seluruh masalah tersebut dengan mengubah instruksi dari sekadar "prompt santai" menjadi **Spesifikasi Mesin (*Runtime Specification*)** dengan penegakan di level global komputer.
 
 ---
 
-## 🗺️ Peta Evolusi Model Kerja (v1.0 → v9.0)
+## 🗺️ Peta Evolusi Model Kerja (v1.0 → v10.0)
 
 | Versi | Milestone Evolusi | Celah Lapangan yang Diatasi |
 |---|---|---|
@@ -29,6 +30,7 @@ Framework ini menyelesaikan seluruh masalah tersebut dengan mengubah instruksi d
 | **v7.0** | *Machine-Readable Enforcer* | Tagging XML (`<system_directive>`, `<hard_boundaries>`) dan injeksi `.cursorrules`. |
 | **v8.0** | *Autonomous & Goal-Pursuing* | Integrasi Gemini 3.8 Flash (*Works Harder* & *Loop-Resolution*) dan Zero-Regression. |
 | **v9.0** | *Self-Healing & Defensive Delivery* | *Defensive Normalization* (anti string matching kaku) dan *Self-Healing Delivery* (perlindungan MIME type di server LiteSpeed/cPanel). |
+| **v10.0** | *Zero-Friction & Spark Integration* | **Zero-Friction Execution** (inspeksi database & skrip CLI tanpa popup manual), kuncian mutlak *Hard Boundaries*, dan integrasi Gemini Spark cloud 24/7. |
 
 ---
 
@@ -38,15 +40,17 @@ Framework ini menyelesaikan seluruh masalah tersebut dengan mengubah instruksi d
 model-kerja-ai/
 ├── docs/
 │   ├── panduan_penyusunan_model_kerja.md   # Panduan lengkap langkah penyusunan dari nol
-│   └── kajian_model_kerja_v9.md            # Kajian arsitektur & temuan lapangan terbaru
+│   ├── kajian_model_kerja_v9.md            # Kajian arsitektur & temuan lapangan
+│   └── penetapan_model_kerja_v10.md        # Dokumen penetapan resmi standar v10.0
 ├── global-rules/
 │   └── global-compliance-checker.md        # Aturan global level mesin (~/.gemini/config/rules/)
-├── releases/                               # Arsip ZIP rilis master (v3.1 s.d v9.0)
+├── releases/                               # Arsip ZIP rilis master (v3.1 s.d v10.0)
 │   ├── model_kerja_v8.0_autonomous_compliance.zip
-│   └── model_kerja_v9.0_autonomous_compliance.zip
-├── template/                               # Template master proyek siap pakai
+│   ├── model_kerja_v9.0_autonomous_compliance.zip
+│   └── model_kerja_v10.0_autonomous_compliance.zip
+├── template/                               # Template master proyek siap pakai (v10.0)
 │   ├── .agents/
-│   │   └── AGENTS.md                       # Runtime specification v9.0
+│   │   └── AGENTS.md                       # Runtime specification v10.0
 │   ├── config/
 │   │   └── database.php                    # Static loader (terisolasi)
 │   ├── migrations/
@@ -68,14 +72,14 @@ model-kerja-ai/
 ## 🚀 Cara Menggunakan
 
 ### 1. Untuk Proyek Baru
-Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali aturan dan bekerja secara mandiri.
+Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali aturan v10.0 dan bekerja secara mandiri tanpa popup persetujuan yang mengganggu.
 
 ### 2. Untuk Proyek yang Sudah Ada
 Pasang `global-rules/global-compliance-checker.md` ke folder konfigurasi global AI mesin Anda:
 - Windows: `C:\Users\<Username>\.gemini\config\rules\`
 - Linux/Mac: `~/.gemini/config/rules/`
 
-Setiap kali Anda membuka proyek lama yang belum memiliki `.agents/AGENTS.md`, AI akan otomatis menawarkan inisiasi dan setup otomatis.
+Setiap kali Anda membuka proyek lama yang belum memiliki `.agents/AGENTS.md`, AI akan otomatis menawarkan inisiasi dan setup otomatis versi 10.0.
 
 ---
 
