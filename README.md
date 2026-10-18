@@ -1,9 +1,9 @@
 ﻿# PiGO Framework — Model Kerja AI
 
-**Palalloi Integrate Gravity Orchestra (v13.1)** | Sistem Pengendalian Agen AI untuk Pengembangan Web & Aplikasi
+**Palalloi Integrate Gravity Orchestra (v13.2)** | Sistem Pengendalian Agen AI untuk Pengembangan Web & Aplikasi
 
-[![Version](https://img.shields.io/badge/version-13.1-blue)](https://github.com/ipalalloi/model-kerja-ai)
-[![Review & Battle--Tested](https://img.shields.io/badge/reviewed%20by-Gemini%20%7C%20Claude%20Haiku%20%7C%20Claude%20Opus-purple)](https://github.com/ipalalloi/model-kerja-ai)
+[![Version](https://img.shields.io/badge/version-13.2-blue)](https://github.com/ipalalloi/model-kerja-ai)
+[![Security Hardened](https://img.shields.io/badge/security-production--hardened-red)]()
 [![Status](https://img.shields.io/badge/status-production--ready-green)]()
 
 ---
@@ -12,7 +12,7 @@
 
 PiGO Framework adalah dokumen panduan arsitektur dan model kerja otonom (AGENTS.md) yang menjadi **sistem saraf dan batasan integritas** bagi agen AI (Google Antigravity, Gemini, Claude, OpenRouter) saat bekerja pada proyek perangkat lunak.
 
-Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rutin tanpa hambatan (*Zero-Friction*), namun secara mutlak terkunci dari melakukan tindakan destruktif (*Hard Boundaries*), kebal terhadap kegagalan berulang (*Resilience Engine*), dan tersambung mulus antar sesi (*Session Continuity*).
+Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rutin tanpa hambatan (*Zero-Friction*), terkunci dari tindakan destruktif (*Hard Boundaries*), kebal kegagalan (*Resilience Engine*), tidak membocorkan rahasia (*Zero-Leakage*), serta menghasilkan sistem aplikasi yang tangguh terhadap eksploitasi produksi (*Production Security Hardening*).
 
 ---
 
@@ -25,32 +25,31 @@ Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rut
 | v8.0–v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
 | v11.0–v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
 | v13.0 | Resilience Engine (RRE) & Stack Adaptation | Audit awal via Claude Haiku 4.5 |
-| **v13.1** | **Session Continuity, File-Based Concurrency & Battle-Tested Refinements** | **Konsensus Multi-Agent (Gemini, Haiku 4.5, Opus 4.6)** |
+| v13.1 | Session Continuity & File-Based Concurrency | Konsensus Multi-Agent (Gemini, Haiku, Opus) |
+| **v13.2** | **Production Security Hardening & Zero-Leakage Protocol** | **Anti-IDOR, Rate-Limiting, Idempotency, SRI & Anti-Leak** |
 
 ---
 
-## Fitur Unggulan v13.1
+## Fitur Unggulan v13.2
 
-### 1. 🔄 Protokol Kontinuitas Sesi (Session Continuity Protocol) — NEW
-- **Mandatory First Step**: Agen wajib membaca status working.md dan 	ask.md di awal percakapan baru.
-- **Deteksi Orphaned Tasks**: Jika ada tugas IN PROGRESS tertinggal dari sesi lama, agen langsung melaporkannya ke pengguna untuk meminta arahan sebelum memulai tugas baru.
+### 1. 🛡️ Standar Keamanan Aplikasi Produksi (Production Security) — NEW
+- **Anti-IDOR (Owner-Binding)**: Setiap kueri mutasi atau pembacaan data personal wajib mengikat user aktif (WHERE id = :id AND user_id = :current_user).
+- **Rate-Limiting & Anti-Bruteforce**: Wajib pembatasan frekuensi percobaan pada endpoint login, OTP, dan endpoint sensitif.
+- **Sanitasi XSS & Rich-Text**: Wajib pembersihan parser aman (*DOMPurify*) dan htmlspecialchars() mutlak di view template.
+- **Integritas CDN (SRI)**: Tag pemanggil CDN wajib menggunakan hash integrity="sha384-..." atau menggunakan aset *self-hosted*.
 
-### 2. 🛡️ Resilience & Recovery Engine (RRE)
-- **Graduated Failure Response (L1–L3)**: Dari retry backoff hingga isolasi/pembatalan otomatis saat integritas terancam.
-- **File & Git Transaction Snapshot**: Snapshot otomatis sebelum batch update file/query sensitif.
-- **Anti-Stuck Escalation Trigger**: Agen wajib berhenti dan memanggil manusia jika percobaan gagal $\ge 5$ kali atau macet $> 10$ menit (mencegah loop tak berujung dan pemborosan kuota token).
+### 2. 🔐 Protokol Anti-Kebocoran Rahasia (Zero-Leakage Protocol) — NEW
+- **Pemeriksaan .gitignore Ketat**: Memastikan .env, kredensial, dan sertifikat privat tidak pernah masuk staging git.
+- **Larangan Hardcoding Secret**: Larangan menaruh kata sandi database atau API key di dalam kode sumber.
+- **Terminal Log Masking**: Menyamarkan kata sandi pada output CLI pengujian.
 
-### 3. 🔒 File-Based Concurrency Control (Anti-Tabrakan Subagen)
-- **Single-Writer Rule**: Satu file hanya boleh ditulis oleh satu subagen pada satu waktu.
-- **Sequential Dependency**: Alur dependensi dijalankan bergantian, bukan paralel liar.
+### 3. ⚙️ Migrasi Idempotent & Anti-Bloat Konteks
+- Skrip migrasi database otonom wajib bersifat *idempotent* (IF NOT EXISTS / cek information_schema) agar aman dieksekusi berulang.
+- Efisiensi konteks agen melalui penargetan baris presisi (*Targeted Line-Range Edits*) guna mencegah respons lambat.
 
-### 4. 🌐 Project Onboarding & Stack Adaptation (POSAP)
-- Profiling otomatis root direktori: PHP (composer.json), TypeScript/Node (package.json), Python (equirements.txt).
-- Validasi sintaks adaptif: php -l untuk PHP, 	sc --noEmit untuk TypeScript, py_compile untuk Python.
-
-### 5. ⚡ Hard Boundaries vs Autonomous Execution
-- **Stop & Ask (Persetujuan Wajib)**: Operasi DROP, TRUNCATE, perubahan alur otorisasi/roles mayor, dan perombakan arsitektur besar.
-- **Zero-Friction (Tanpa Izin)**: Query baca (SELECT), penargetan edit baris presisi, uji CLI, pengemasan ZIP rilis.
+### 4. 🔄 Protokol Kontinuitas Sesi & Anti-Stuck Escalation
+- Verifikasi wajib working.md di awal sesi untuk menyambung tugas tertunda.
+- Eskalasi otomatis ke manusia jika percobaan gagal $\ge 5$ kali atau macet $> 10$ menit.
 
 ---
 
@@ -58,11 +57,11 @@ Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rut
 
 | Perintah | Deskripsi Tindakan Agen |
 |---|---|
-| pigo run | Jalankan instruksi dengan kepatuhan penuh framework v13.1 |
+| pigo run | Jalankan instruksi dengan kepatuhan penuh framework v13.2 |
 | pigo fix | Analisis error log, perbaiki kode, dan uji sintaks otonom |
 | pigo test | Lakukan validasi sintaks dan cek anti-regresi pada berkas yang disentuh |
 | pigo sync | Perbarui status checklist working.md dan 	ask.md |
-| pigo audit | Jalankan checklist Anti-Bypass sebelum rilis |
+| pigo audit | Jalankan checklist Anti-Bypass, Anti-Leak, dan Anti-IDOR |
 | pigo pack | Bersihkan artefak dan kemas rilis live production (uild_upload.ps1) |
 
 ---
@@ -71,7 +70,8 @@ Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rut
 
 | Rilis | Berkas Arsip | Hash SHA256 |
 |---|---|---|
-| **v13.1** | model_kerja_v13.1_battle_tested.zip | FDD69A81791FA804FD115A9F9FE6E8894AE4D3EDF4268D0CF061D7A5B8960E18 |
+| **v13.2** | model_kerja_v13.2_production_hardened.zip | 2D518C105C3B19F6863E8C5B1B43BA5D4D61C937E1E0B0C2A5CE33F43D371D5D |
+| v13.1 | model_kerja_v13.1_battle_tested.zip | FDD69A81791FA804FD115A9F9FE6E8894AE4D3EDF4268D0CF061D7A5B8960E18 |
 | v13.0 | model_kerja_v13.0_resilience_orchestration.zip | C62DF41C844244024E6C6FD813F89FC6E27EBC778FCCB37617EEF3B067994080 |
 | v12.0 | model_kerja_v12.0_autonomous_compliance.zip | 18B4E8F0A5535F534A5164811B16B419BBB5B350676BABF28D3B08C53E35BE22 |
 
