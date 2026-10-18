@@ -1,112 +1,79 @@
 ﻿# PiGO Framework — Model Kerja AI
 
-**Palalloi Integrate Gravity Orchestra** | Sistem Pengendalian Agen AI untuk Pengembangan Web
+**Palalloi Integrate Gravity Orchestra (v13.1)** | Sistem Pengendalian Agen AI untuk Pengembangan Web & Aplikasi
 
-[![Version](https://img.shields.io/badge/version-13.0-blue)](https://github.com/ipalalloi/model-kerja-ai)
-[![Analyzed by](https://img.shields.io/badge/analyzed%20by-Claude%20Haiku%204.5-orange)](https://openrouter.ai)
-[![Robustness](https://img.shields.io/badge/robustness-%2B65%25-green)]()
-[![Flexibility](https://img.shields.io/badge/flexibility-%2B50%25-green)]()
+[![Version](https://img.shields.io/badge/version-13.1-blue)](https://github.com/ipalalloi/model-kerja-ai)
+[![Review & Battle--Tested](https://img.shields.io/badge/reviewed%20by-Gemini%20%7C%20Claude%20Haiku%20%7C%20Claude%20Opus-purple)](https://github.com/ipalalloi/model-kerja-ai)
+[![Status](https://img.shields.io/badge/status-production--ready-green)]()
 
 ---
 
 ## Apa itu PiGO Framework?
 
-PiGO adalah dokumen AGENTS.md yang menjadi **sistem saraf** bagi agen AI (Google Antigravity / Gemini) saat bekerja di proyek pengembangan web. Framework ini mendefinisikan:
-- Apa yang boleh dilakukan agen secara otonom
-- Apa yang harus diminta izin dulu
-- Bagaimana mengelola token secara efisien
-- Bagaimana memulihkan diri saat terjadi kegagalan
+PiGO Framework adalah dokumen panduan arsitektur dan model kerja otonom (AGENTS.md) yang menjadi **sistem saraf dan batasan integritas** bagi agen AI (Google Antigravity, Gemini, Claude, OpenRouter) saat bekerja pada proyek perangkat lunak.
+
+Framework ini memastikan agen AI bekerja secara mandiri dan cepat pada tugas rutin tanpa hambatan (*Zero-Friction*), namun secara mutlak terkunci dari melakukan tindakan destruktif (*Hard Boundaries*), kebal terhadap kegagalan berulang (*Resilience Engine*), dan tersambung mulus antar sesi (*Session Continuity*).
 
 ---
 
 ## Riwayat Evolusi
 
-| Versi | Highlight | Tanggal |
-|-------|-----------|---------|
-| v1.0 | Fondasi awal | 2026-07 |
-| v2.0 | Security hardening | 2026-07 |
-| v6.0 | MVC + Anti-Bypass | 2026-08 |
-| v8.0 | Autonomous Goal-Pursuing | 2026-09 |
-| v10.0 | Zero-Friction + PiGO Branding | 2026-09 |
-| v11.0 | Antigravity 2.0 + Multi-Model Mesh | 2026-10 |
-| v12.0 | Dual-Tier Token Optimization | 2026-10 |
-| **v13.0** | **Resilience Engine + Conflict Resolution + Onboarding** | **2026-10** |
+| Versi | Highlight Utama | Catatan Audit |
+|-------|-----------------|---------------|
+| v1.0–v2.0 | Fondasi Batasan & Security Hardening | Perlindungan OWASP Top 10 |
+| v6.0–v7.0 | Clean MVC & Anti-Bypass Checklist | Standarisasi validasi & sintaks |
+| v8.0–v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
+| v11.0–v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
+| v13.0 | Resilience Engine (RRE) & Stack Adaptation | Audit awal via Claude Haiku 4.5 |
+| **v13.1** | **Session Continuity, File-Based Concurrency & Battle-Tested Refinements** | **Konsensus Multi-Agent (Gemini, Haiku 4.5, Opus 4.6)** |
 
 ---
 
-## Fitur Utama v13.0
+## Fitur Unggulan v13.1
 
-### 🛡️ Resilience & Recovery Engine (RRE) — NEW
-- **Graduated Failure Response** L1-L4: dari retry sederhana hingga isolasi sistem total
-- **Transaction Wrapper**: pre-snapshot → rollback script → execute → validate
-- **Escalation Trigger**: agen wajib eskalasi ke manusia jika macet > 10 menit atau retry ≥ 5 kali gagal
+### 1. 🔄 Protokol Kontinuitas Sesi (Session Continuity Protocol) — NEW
+- **Mandatory First Step**: Agen wajib membaca status working.md dan 	ask.md di awal percakapan baru.
+- **Deteksi Orphaned Tasks**: Jika ada tugas IN PROGRESS tertinggal dari sesi lama, agen langsung melaporkannya ke pengguna untuk meminta arahan sebelum memulai tugas baru.
 
-### 🔀 Conflict Resolution & Subagent Orchestration (ICRO) — NEW
-- **Conflict Matrix**: Write-Write, Write-Read, Dependency, Resource — masing-masing punya strategi resolusi
-- **DAG Scheduling**: subagen dijalankan sesuai urutan dependensi
-- **Naming Lock**: mencegah race condition saat 2 subagen menulis file yang sama
+### 2. 🛡️ Resilience & Recovery Engine (RRE)
+- **Graduated Failure Response (L1–L3)**: Dari retry backoff hingga isolasi/pembatalan otomatis saat integritas terancam.
+- **File & Git Transaction Snapshot**: Snapshot otomatis sebelum batch update file/query sensitif.
+- **Anti-Stuck Escalation Trigger**: Agen wajib berhenti dan memanggil manusia jika percobaan gagal $\ge 5$ kali atau macet $> 10$ menit (mencegah loop tak berujung dan pemborosan kuota token).
 
-### 🚀 Project Onboarding Protocol (POSAP) — NEW
-- **Auto-profiling** tech stack (PHP, Node.js, Python, dll)
-- **Stack Adaptation Rules**: aturan berbeda per stack terdeteksi
-- **Dry Run Validation**: verifikasi akses resource sebelum operasi penuh
+### 3. 🔒 File-Based Concurrency Control (Anti-Tabrakan Subagen)
+- **Single-Writer Rule**: Satu file hanya boleh ditulis oleh satu subagen pada satu waktu.
+- **Sequential Dependency**: Alur dependensi dijalankan bergantian, bukan paralel liar.
 
-### ⚡ Hard Boundaries + Autonomous Execution
-- **Stop & Ask** untuk: DROP/TRUNCATE DB, breaking changes, fitur skala besar
-- **Zero-Friction Execution** untuk: SELECT, file edit, CLI testing, debug loop
+### 4. 🌐 Project Onboarding & Stack Adaptation (POSAP)
+- Profiling otomatis root direktori: PHP (composer.json), TypeScript/Node (package.json), Python (equirements.txt).
+- Validasi sintaks adaptif: php -l untuk PHP, 	sc --noEmit untuk TypeScript, py_compile untuk Python.
 
-### 🎯 Dual-Tier Token Orchestration
-- **Tier 1 (Flash 90%)**: coding, refactor, debug harian
-- **Tier 2 (Frontier 10%)**: arsitektur besar & audit keamanan
-- **Token Budget Alert**: eskalasi otomatis jika kuota Frontier > 85%
-
-### 🏗️ 6 Architecture Pillars
-Aman | Responsif | Dinamis | Moderen | Bersih | Mobile Ready
+### 5. ⚡ Hard Boundaries vs Autonomous Execution
+- **Stop & Ask (Persetujuan Wajib)**: Operasi DROP, TRUNCATE, perubahan alur otorisasi/roles mayor, dan perombakan arsitektur besar.
+- **Zero-Friction (Tanpa Izin)**: Query baca (SELECT), penargetan edit baris presisi, uji CLI, pengemasan ZIP rilis.
 
 ---
 
-## Cara Penggunaan
+## Pintasan Perintah PiGO (PiGO Shortcuts)
 
-### 1. Pasang di Proyek Baru
-\\\ash
-mkdir .agents
-cp AGENTS.md .agents/AGENTS.md
-\\\
-Atau gunakan pigo run di Antigravity IDE jika skill PiGO sudah terpasang.
-
-### 2. Pasang sebagai Global Rule
-Salin ke:
-\\\
-C:\Users\<nama>\\.gemini\config\rules\global-compliance-checker.md
-\\\
-
-### 3. PiGO Shortcuts (via Antigravity IDE)
-| Perintah | Fungsi |
-|---------|--------|
-| pigo run | Jalankan tugas dengan model kerja aktif |
-| pigo fix | Perbaiki bug yang ditemukan |
-| pigo pack | Kemas rilis production (build_upload.ps1) |
-| pigo test | Uji sintaks semua file yang disentuh |
-| pigo sync | Sinkronkan working.md & task.md |
-| pigo audit | Jalankan Anti-Bypass Checklist |
+| Perintah | Deskripsi Tindakan Agen |
+|---|---|
+| pigo run | Jalankan instruksi dengan kepatuhan penuh framework v13.1 |
+| pigo fix | Analisis error log, perbaiki kode, dan uji sintaks otonom |
+| pigo test | Lakukan validasi sintaks dan cek anti-regresi pada berkas yang disentuh |
+| pigo sync | Perbarui status checklist working.md dan 	ask.md |
+| pigo audit | Jalankan checklist Anti-Bypass sebelum rilis |
+| pigo pack | Bersihkan artefak dan kemas rilis live production (uild_upload.ps1) |
 
 ---
 
-## Arsip Versi
+## Verifikasi Integritas Arsip
 
-| File | Versi | SHA256 |
-|------|-------|--------|
-| model_kerja_v12.0_autonomous_compliance.zip | v12.0 | 18B4E8F0A5535F534A5164811B16B419BBB5B350676BABF28D3B08C53E35BE22 |
-| model_kerja_v13.0_resilience_orchestration.zip | v13.0 | C62DF41C844244024E6C6FD813F89FC6E27EBC778FCCB37617EEF3B067994080 |
-
----
-
-## Kontributor Analisis
-
-- **v13.0 Analysis**: Claude Haiku 4.5 via OpenRouter (Oktober 2026)
-  - Temuan kritis: No Rollback on Autonomous Failure, No Conflict Resolution, No Onboarding Protocol
-  - Impact estimasi: +65% Robustness, +40% Dynamism, +50% Flexibility
+| Rilis | Berkas Arsip | Hash SHA256 |
+|---|---|---|
+| **v13.1** | model_kerja_v13.1_battle_tested.zip | FDD69A81791FA804FD115A9F9FE6E8894AE4D3EDF4268D0CF061D7A5B8960E18 |
+| v13.0 | model_kerja_v13.0_resilience_orchestration.zip | C62DF41C844244024E6C6FD813F89FC6E27EBC778FCCB37617EEF3B067994080 |
+| v12.0 | model_kerja_v12.0_autonomous_compliance.zip | 18B4E8F0A5535F534A5164811B16B419BBB5B350676BABF28D3B08C53E35BE22 |
 
 ---
-
-*PiGO Framework dikembangkan dan dikelola oleh [@ipalalloi](https://github.com/ipalalloi)*
+*Dikelola dan dikembangkan oleh [@ipalalloi](https://github.com/ipalalloi)*
