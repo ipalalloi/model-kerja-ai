@@ -1,133 +1,112 @@
-﻿# 🚀 PiGO Framework
-### **Palalloi Integrate Gravity Orchestra (v12.0)**
-> *Autonomous, Self-Healing, Strict Compliance, Multi-Model Mesh & Zero-Regression AI Engineering Governance Framework*
+﻿# PiGO Framework — Model Kerja AI
 
-[![PiGO Version](https://img.shields.io/badge/PiGO_Core-v12.0-blue.svg)](https://github.com/ipalalloi/model-kerja-ai)
-[![AI Architecture](https://img.shields.io/badge/Architecture-Antigravity_2.0_%7C_Gemini_4_Argon_%7C_Claude_5.5-orange.svg)](https://github.com/ipalalloi/model-kerja-ai)
-[![Zero-Regression](https://img.shields.io/badge/Policy-Zero--Regression-green.svg)](https://github.com/ipalalloi/model-kerja-ai)
-[![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+**Palalloi Integrate Gravity Orchestra** | Sistem Pengendalian Agen AI untuk Pengembangan Web
 
-**PiGO (Palalloi Integrate Gravity Orchestra)** adalah framework tata kelola (*AI governance engine*) dan spesifikasi runtime (*runtime specification*) yang mentransformasi agen AI (Google Gemini, Claude, OpenAI, OpenRouter) dari sekadar "chatbot penjawab prompt" menjadi **insinyur perangkat lunak otonom yang berdisiplin tinggi, patuh aturan, dan berorientasi pada penyelesaian sasaran (*Goal-Pursuing*)**.
-
-Framework ini dirancang native untuk platform **Google Antigravity 2.0**, memanfaatkan efisiensi eksekusi **Gemini 3.8 Flash**, penalaran mendalam **Gemini 4 Argon & Claude Sonnet 5.5**, serta otomasi cloud 24/7 dari **Gemini Spark**.
+[![Version](https://img.shields.io/badge/version-13.0-blue)](https://github.com/ipalalloi/model-kerja-ai)
+[![Analyzed by](https://img.shields.io/badge/analyzed%20by-Claude%20Haiku%204.5-orange)](https://openrouter.ai)
+[![Robustness](https://img.shields.io/badge/robustness-%2B65%25-green)]()
+[![Flexibility](https://img.shields.io/badge/flexibility-%2B50%25-green)]()
 
 ---
 
-## 🌟 Mengapa PiGO Framework Diciptakan?
+## Apa itu PiGO Framework?
 
-Dalam era kolaborasi pengembang dan AI, terdapat 5 masalah kritis klasik di lapangan:
-1. **Kehilangan Memori / Konteks (*Context Drift*)**: Saat kuota habis atau ganti akun, AI melupakan tugas sebelumnya dan merusak pekerjaan yang sudah ada.
-2. **Halusinasi Konfigurasi Lingkungan**: AI menimpa konfigurasi lokal atau server (`database.php`) hingga menyebabkan error 500 fatal.
-3. **Regresi Kode (*Breaking Changes*)**: Memperbaiki 1 bug kecil tetapi mematahkan 3 fungsi utama yang sebelumnya stabil.
-4. **Sampah Produksi**: Berkas percakapan, file backup manual (`*.old`), dan dump SQL ikut terunggah ke hosting live.
-5. **Kelelahan Konfirmasi (*Prompt Fatigue*)**: Terlalu sering diminta menyetujui kueri baca atau perintah terminal rutin.
-
-**PiGO Framework** menyelesaikan seluruh masalah tersebut dengan mengubah instruksi santai menjadi **Spesifikasi Mesin (*Runtime Specification*)** dengan penegakan di level global komputer pengembang.
+PiGO adalah dokumen AGENTS.md yang menjadi **sistem saraf** bagi agen AI (Google Antigravity / Gemini) saat bekerja di proyek pengembangan web. Framework ini mendefinisikan:
+- Apa yang boleh dilakukan agen secara otonom
+- Apa yang harus diminta izin dulu
+- Bagaimana mengelola token secara efisien
+- Bagaimana memulihkan diri saat terjadi kegagalan
 
 ---
 
-## 🏛️ 4 Pilar Filosofis Akronim PiGO
+## Riwayat Evolusi
 
-| Huruf | Komponen | Makna Filosofis & Relevansi Teknis |
-|:---:|---|---|
-| **P** | **Palalloi** | **Identitas Arsitek & Signature Standar**: Orisinalitas dan rekam jejak pengalaman nyata dari proyek-proyek produksi (SIMPEL, simulasi_al, spmi_pemetaan_app). |
-| **I** | **Integrate** | **Keterpaduan Sistem**: Mengintegrasikan perlindungan *Zero-Regression*, *Self-Healing*, *Session Sync*, proteksi webroot, dan kontinuitas memori state (`working.md`). |
-| **G** | **Gravity** | **Fondasi Lingkungan**: Berakar pada platform mutakhir **Google Antigravity 2.0 & ekosistem Gemini (3.8 Flash, 4 Argon, Spark)**, menarik agen agar tidak melayang bebas tanpa aturan (*grounded by strict rules*). |
-| **O** | **Orchestra** | **Harmoni Multi-Model**: Mengorkestrasi berbagai agen spesialis via *Direct Subagent Mesh* dan multi-LLM (Gemini Flash, Pro, Argon, Claude 5.5, OpenRouter) layaknya orkestra simfoni yang selaras. |
-
----
-
-## 🗺️ Peta Evolusi Model Kerja (v1.0 → v12.0)
-
-| Versi | Milestone Evolusi | Celah Lapangan yang Diatasi |
-|---|---|---|
-| **v1.0 – v2.0** | *Security Baseline* | Sanitasi input, cegah SQL injection PDO, validasi MIME sesungguhnya via `finfo_file()`. |
-| **v3.0** | *Real-World Simulation Gap* | Kunci file `config/database.php` (anti-overwrite), inisiasi `working.md`, dan `build_upload.ps1`. |
-| **v4.0** | *Universal Domain Decoupling* | Generalisasi aturan: Hapus aturan khusus akademik agar fleksibel untuk semua jenis aplikasi (SIM, POS, E-Commerce). |
-| **v5.0** | *Multi-Project Real Insights* | *Session Hardening*, sinkronisasi status akun live, dan auto-kompresi gambar upload. |
-| **v6.0** | *MVC & Anti-Bypass Protocol* | Arsitektur MVC, integrasi AG Orchestra (multi-agent), pembersihan ketat ZIP live dari file `.sql` dan `.old`. |
-| **v7.0** | *Machine-Readable Enforcer* | Tagging XML (`<system_directive>`, `<hard_boundaries>`) dan injeksi `.cursorrules`. |
-| **v8.0** | *Autonomous & Goal-Pursuing* | Integrasi Gemini 3.8 Flash (*Works Harder* & *Loop-Resolution*) dan Zero-Regression. |
-| **v9.0** | *Self-Healing & Defensive Delivery* | *Defensive Normalization* (anti string matching kaku) dan *Self-Healing Delivery* (perlindungan MIME type di server LiteSpeed/cPanel). |
-| **v10.0 (PiGO)** | *Zero-Friction & Spark Integration* | **Zero-Friction Execution** (inspeksi database & skrip CLI tanpa popup manual), kuncian mutlak *Hard Boundaries*, dan integrasi Gemini Spark cloud 24/7. |
-| **v12.0 (PiGO)** | *Antigravity 2.0 & Multi-Model Mesh* | Integrasi **Gemini 4 Argon & Claude 5.5**, Direct Subagent Mesh (@syntax), efisiensi line-range file operations, dan rilis aplikasi Googlebook/Android. |
-| **v12.0 (PiGO)** | *Dual-Tier Token Optimization* | **Dual-Tier Token Budgeting** (Gemini 3.8 Flash 90% workhorse + Frontier reasoning), mitigasi Fairwind Program Argon, dan efisiensi kuota Antigravity. |
+| Versi | Highlight | Tanggal |
+|-------|-----------|---------|
+| v1.0 | Fondasi awal | 2026-07 |
+| v2.0 | Security hardening | 2026-07 |
+| v6.0 | MVC + Anti-Bypass | 2026-08 |
+| v8.0 | Autonomous Goal-Pursuing | 2026-09 |
+| v10.0 | Zero-Friction + PiGO Branding | 2026-09 |
+| v11.0 | Antigravity 2.0 + Multi-Model Mesh | 2026-10 |
+| v12.0 | Dual-Tier Token Optimization | 2026-10 |
+| **v13.0** | **Resilience Engine + Conflict Resolution + Onboarding** | **2026-10** |
 
 ---
 
-## ⚡ PiGO Quick Shortcuts (Perintah Pintasan Semi-Otonom)
+## Fitur Utama v13.0
 
-Agar pengembang tidak perlu mengetik atau menghafal prompt panjang, PiGO Framework menyediakan **Pintasan Cepat (Command Shortcuts)**. Cukup ketik kata kunci 1-2 kata ini di chat:
+### 🛡️ Resilience & Recovery Engine (RRE) — NEW
+- **Graduated Failure Response** L1-L4: dari retry sederhana hingga isolasi sistem total
+- **Transaction Wrapper**: pre-snapshot → rollback script → execute → validate
+- **Escalation Trigger**: agen wajib eskalasi ke manusia jika macet > 10 menit atau retry ≥ 5 kali gagal
 
-| Pintasan (*Shortcut*) | Aksi Otonom AI yang Dijalankan Otomatis |
-|---|---|
-| **`pigo run`** / **`lanjut`** | Membaca `working.md`, melanjutkan tugas `<in_progress>`, mengetes kode, dan mengupdate state secara mandiri. |
-| **`pigo fix [isu/error]`** | Mencari sumber error, memperbaiki kode dengan *Zero-Regression*, dan menguji ulang sampai tuntas. |
-| **`pigo pack`** | Mengemas rilis live bersih via `build_upload.ps1`, mengambil SHA256, dan mencatatnya ke `RELEASE_MANIFEST.md`. |
-| **`pigo test`** | Menguji sintaks (`php -l`), memeriksa inisialisasi variabel, dan memverifikasi proteksi `try-catch`. |
-| **`pigo sync`** | Mengaudit berkas yang baru diubah dan menyinkronkan status memori `working.md`. |
-| **`pigo audit`** | Memeriksa kepatuhan 6 pilar (keamanan upload MIME, `.htaccess`, sesi, OWASP). |
+### 🔀 Conflict Resolution & Subagent Orchestration (ICRO) — NEW
+- **Conflict Matrix**: Write-Write, Write-Read, Dependency, Resource — masing-masing punya strategi resolusi
+- **DAG Scheduling**: subagen dijalankan sesuai urutan dependensi
+- **Naming Lock**: mencegah race condition saat 2 subagen menulis file yang sama
 
----
+### 🚀 Project Onboarding Protocol (POSAP) — NEW
+- **Auto-profiling** tech stack (PHP, Node.js, Python, dll)
+- **Stack Adaptation Rules**: aturan berbeda per stack terdeteksi
+- **Dry Run Validation**: verifikasi akses resource sebelum operasi penuh
 
-## 📁 Struktur Repositori PiGO
+### ⚡ Hard Boundaries + Autonomous Execution
+- **Stop & Ask** untuk: DROP/TRUNCATE DB, breaking changes, fitur skala besar
+- **Zero-Friction Execution** untuk: SELECT, file edit, CLI testing, debug loop
 
-```
-model-kerja-ai/
-├── docs/
-│   ├── panduan_memulai_projek_baru.md      # Panduan langkah inisiasi proyek baru (teks)
-│   ├── panduan_visual_projek_baru.html     # Panduan visual interaktif inisiasi proyek baru (HTML)
-│   ├── panduan_penyusunan_model_kerja.md   # Panduan lengkap langkah penyusunan dari nol
-│   ├── kajian_model_kerja_v11.md           # Kajian arsitektur & update ekosistem AI Oktober 2026
-│   └── penetapan_model_kerja_v11.md        # Dokumen penetapan resmi standar PiGO v12.0
-├── global-rules/
-│   └── global-compliance-checker.md        # Aturan global level mesin (~/.gemini/config/rules/)
-├── releases/                               # Arsip ZIP rilis master (v3.1 s.d v12.0)
-│   ├── model_kerja_v10.0_autonomous_compliance.zip
-│   └── model_kerja_v12.0_autonomous_compliance.zip
-│   ├── model_kerja_v12.0_autonomous_compliance.zip
-├── skills/
-│   └── pigo-shortcuts/                     # Engine global skill shortcut pigo
-├── template/                               # Template master proyek siap pakai (PiGO v12.0)
-│   ├── .agents/
-│   │   └── AGENTS.md                       # Runtime specification PiGO v12.0
-│   ├── config/
-│   │   └── database.php                    # Static loader (terisolasi)
-│   ├── migrations/
-│   │   └── MIGRATION_LOG.md                # Ledger pencatatan perubahan database
-│   ├── uploads/
-│   │   └── .htaccess                       # Blokir eksekusi PHP pada upload
-│   ├── .cursorrules                        # Enforcer wajib baca aturan
-│   ├── .gitignore                          # Daftar abaikan file internal/sensitif
-│   ├── .htaccess                           # Proteksi root & webroot
-│   ├── build_upload.ps1                    # Script automasi pengemas ZIP live clean
-│   ├── RELEASE_MANIFEST.md                 # Ledger rilis, checksum SHA256 & rollback plan
-│   └── working.md                          # External memory state AI
-├── .gitignore
-└── README.md
-```
+### 🎯 Dual-Tier Token Orchestration
+- **Tier 1 (Flash 90%)**: coding, refactor, debug harian
+- **Tier 2 (Frontier 10%)**: arsitektur besar & audit keamanan
+- **Token Budget Alert**: eskalasi otomatis jika kuota Frontier > 85%
+
+### 🏗️ 6 Architecture Pillars
+Aman | Responsif | Dinamis | Moderen | Bersih | Mobile Ready
 
 ---
 
-## 🚀 Cara Mengadopsi PiGO Framework
+## Cara Penggunaan
 
-### 📖 Panduan Praktis & Visual Memulai Proyek Baru
-Untuk panduan langkah demi langkah yang sangat mudah diikuti:
-- 📄 **Panduan Teks Langkah Demi Langkah**: [docs/panduan_memulai_projek_baru.md](docs/panduan_memulai_projek_baru.md)
-- 🎨 **Panduan Visual Interaktif (HTML)**: [docs/panduan_visual_projek_baru.html](docs/panduan_visual_projek_baru.html)
+### 1. Pasang di Proyek Baru
+\\\ash
+mkdir .agents
+cp AGENTS.md .agents/AGENTS.md
+\\\
+Atau gunakan pigo run di Antigravity IDE jika skill PiGO sudah terpasang.
 
-### 1. Inisialisasi Proyek Baru
-Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali identitas PiGO v12.0 dan bekerja secara otonom tanpa gangguan popup persetujuan rutin.
+### 2. Pasang sebagai Global Rule
+Salin ke:
+\\\
+C:\Users\<nama>\\.gemini\config\rules\global-compliance-checker.md
+\\\
 
-### 2. Penegakan Global di Komputer (*Global Enforcer*)
-Pasang `global-rules/global-compliance-checker.md` ke folder konfigurasi global AI mesin Anda:
-- Windows: `C:\Users\<Username>\.gemini\config\rules\`
-- Linux/Mac: `~/.gemini/config/rules/`
-
-Setiap kali Anda membuka proyek lama atau baru yang belum memiliki `.agents/AGENTS.md`, sistem akan otomatis menawarkan inisiasi PiGO secara instan.
+### 3. PiGO Shortcuts (via Antigravity IDE)
+| Perintah | Fungsi |
+|---------|--------|
+| pigo run | Jalankan tugas dengan model kerja aktif |
+| pigo fix | Perbaiki bug yang ditemukan |
+| pigo pack | Kemas rilis production (build_upload.ps1) |
+| pigo test | Uji sintaks semua file yang disentuh |
+| pigo sync | Sinkronkan working.md & task.md |
+| pigo audit | Jalankan Anti-Bypass Checklist |
 
 ---
 
-## 📜 Lisensi & Kontribusi
-PiGO Framework bersifat terbuka untuk pembelajaran, adopsi, dan standardisasi komunitas pengembang AI. Diskusi dan kontribusi terbuka melalui *Pull Requests* atau *Issues*.
+## Arsip Versi
 
+| File | Versi | SHA256 |
+|------|-------|--------|
+| model_kerja_v12.0_autonomous_compliance.zip | v12.0 | 18B4E8F0A5535F534A5164811B16B419BBB5B350676BABF28D3B08C53E35BE22 |
+| model_kerja_v13.0_resilience_orchestration.zip | v13.0 | C62DF41C844244024E6C6FD813F89FC6E27EBC778FCCB37617EEF3B067994080 |
+
+---
+
+## Kontributor Analisis
+
+- **v13.0 Analysis**: Claude Haiku 4.5 via OpenRouter (Oktober 2026)
+  - Temuan kritis: No Rollback on Autonomous Failure, No Conflict Resolution, No Onboarding Protocol
+  - Impact estimasi: +65% Robustness, +40% Dynamism, +50% Flexibility
+
+---
+
+*PiGO Framework dikembangkan dan dikelola oleh [@ipalalloi](https://github.com/ipalalloi)*
