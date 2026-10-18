@@ -1,8 +1,8 @@
 ﻿# 🚀 PiGO Framework
-### **Palalloi Integrate Gravity Orchestra (v11.0)**
+### **Palalloi Integrate Gravity Orchestra (v12.0)**
 > *Autonomous, Self-Healing, Strict Compliance, Multi-Model Mesh & Zero-Regression AI Engineering Governance Framework*
 
-[![PiGO Version](https://img.shields.io/badge/PiGO_Core-v11.0-blue.svg)](https://github.com/ipalalloi/model-kerja-ai)
+[![PiGO Version](https://img.shields.io/badge/PiGO_Core-v12.0-blue.svg)](https://github.com/ipalalloi/model-kerja-ai)
 [![AI Architecture](https://img.shields.io/badge/Architecture-Antigravity_2.0_%7C_Gemini_4_Argon_%7C_Claude_5.5-orange.svg)](https://github.com/ipalalloi/model-kerja-ai)
 [![Zero-Regression](https://img.shields.io/badge/Policy-Zero--Regression-green.svg)](https://github.com/ipalalloi/model-kerja-ai)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
@@ -37,7 +37,7 @@ Dalam era kolaborasi pengembang dan AI, terdapat 5 masalah kritis klasik di lapa
 
 ---
 
-## 🗺️ Peta Evolusi Model Kerja (v1.0 → v11.0)
+## 🗺️ Peta Evolusi Model Kerja (v1.0 → v12.0)
 
 | Versi | Milestone Evolusi | Celah Lapangan yang Diatasi |
 |---|---|---|
@@ -50,7 +50,8 @@ Dalam era kolaborasi pengembang dan AI, terdapat 5 masalah kritis klasik di lapa
 | **v8.0** | *Autonomous & Goal-Pursuing* | Integrasi Gemini 3.8 Flash (*Works Harder* & *Loop-Resolution*) dan Zero-Regression. |
 | **v9.0** | *Self-Healing & Defensive Delivery* | *Defensive Normalization* (anti string matching kaku) dan *Self-Healing Delivery* (perlindungan MIME type di server LiteSpeed/cPanel). |
 | **v10.0 (PiGO)** | *Zero-Friction & Spark Integration* | **Zero-Friction Execution** (inspeksi database & skrip CLI tanpa popup manual), kuncian mutlak *Hard Boundaries*, dan integrasi Gemini Spark cloud 24/7. |
-| **v11.0 (PiGO)** | *Antigravity 2.0 & Multi-Model Mesh* | Integrasi **Gemini 4 Argon & Claude 5.5**, Direct Subagent Mesh (`@syntax`), efisiensi line-range file operations, dan rilis aplikasi Googlebook/Android. |
+| **v12.0 (PiGO)** | *Antigravity 2.0 & Multi-Model Mesh* | Integrasi **Gemini 4 Argon & Claude 5.5**, Direct Subagent Mesh (@syntax), efisiensi line-range file operations, dan rilis aplikasi Googlebook/Android. |
+| **v12.0 (PiGO)** | *Dual-Tier Token Optimization* | **Dual-Tier Token Budgeting** (Gemini 3.8 Flash 90% workhorse + Frontier reasoning), mitigasi Fairwind Program Argon, dan efisiensi kuota Antigravity. |
 
 ---
 
@@ -78,17 +79,18 @@ model-kerja-ai/
 │   ├── panduan_visual_projek_baru.html     # Panduan visual interaktif inisiasi proyek baru (HTML)
 │   ├── panduan_penyusunan_model_kerja.md   # Panduan lengkap langkah penyusunan dari nol
 │   ├── kajian_model_kerja_v11.md           # Kajian arsitektur & update ekosistem AI Oktober 2026
-│   └── penetapan_model_kerja_v11.md        # Dokumen penetapan resmi standar PiGO v11.0
+│   └── penetapan_model_kerja_v11.md        # Dokumen penetapan resmi standar PiGO v12.0
 ├── global-rules/
 │   └── global-compliance-checker.md        # Aturan global level mesin (~/.gemini/config/rules/)
-├── releases/                               # Arsip ZIP rilis master (v3.1 s.d v11.0)
+├── releases/                               # Arsip ZIP rilis master (v3.1 s.d v12.0)
 │   ├── model_kerja_v10.0_autonomous_compliance.zip
-│   └── model_kerja_v11.0_autonomous_compliance.zip
+│   └── model_kerja_v12.0_autonomous_compliance.zip
+│   ├── model_kerja_v12.0_autonomous_compliance.zip
 ├── skills/
 │   └── pigo-shortcuts/                     # Engine global skill shortcut pigo
-├── template/                               # Template master proyek siap pakai (PiGO v11.0)
+├── template/                               # Template master proyek siap pakai (PiGO v12.0)
 │   ├── .agents/
-│   │   └── AGENTS.md                       # Runtime specification PiGO v11.0
+│   │   └── AGENTS.md                       # Runtime specification PiGO v12.0
 │   ├── config/
 │   │   └── database.php                    # Static loader (terisolasi)
 │   ├── migrations/
@@ -115,7 +117,7 @@ Untuk panduan langkah demi langkah yang sangat mudah diikuti:
 - 🎨 **Panduan Visual Interaktif (HTML)**: [docs/panduan_visual_projek_baru.html](docs/panduan_visual_projek_baru.html)
 
 ### 1. Inisialisasi Proyek Baru
-Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali identitas PiGO v11.0 dan bekerja secara otonom tanpa gangguan popup persetujuan rutin.
+Salin seluruh isi folder `template/` ke root direktori proyek Anda. Agen AI akan langsung mengenali identitas PiGO v12.0 dan bekerja secara otonom tanpa gangguan popup persetujuan rutin.
 
 ### 2. Penegakan Global di Komputer (*Global Enforcer*)
 Pasang `global-rules/global-compliance-checker.md` ke folder konfigurasi global AI mesin Anda:
@@ -128,3 +130,4 @@ Setiap kali Anda membuka proyek lama atau baru yang belum memiliki `.agents/AGEN
 
 ## 📜 Lisensi & Kontribusi
 PiGO Framework bersifat terbuka untuk pembelajaran, adopsi, dan standardisasi komunitas pengembang AI. Diskusi dan kontribusi terbuka melalui *Pull Requests* atau *Issues*.
+
