@@ -1,4 +1,4 @@
-# Collaboration & Team Engineering Guide
+﻿# Collaboration & Team Engineering Guide
 *PiGO Framework Collaboration Standard — Professional Multi-Tier Engineering Workflow (Oktober 2026)*
 
 Welcome to the engineering team! This guide establishes professional collaboration standards for **Project Leads**, **Supervisors / Reviewers**, and **Module Contributors** to build robust, scalable, and production-grade software together seamlessly without risking system regressions or data breaches.
@@ -19,12 +19,12 @@ Welcome to the engineering team! This guide establishes professional collaborati
 
 Direct commits to the `main` production branch are **strictly prohibited**. All feature implementations and bugfixes must traverse this standardized pipeline:
 
-```
-[main] ───────────────────────────┬ (Solely merged by Principal Architect)
-                                  │
-[staging] ──────┬─────────────────┴ (Integration & Supervisory Testing)
-                │ (git checkout -b)
-[feat/module] ──┴─── (Contributor Workspace) ───► [Submit Pull Request]
+```mermaid
+flowchart TD
+    A["Branch: main<br/>(Production Release)"] --- B["Branch: staging<br/>(Supervisory Testing & Staging)"]
+    B -->|git checkout -b| C["Branch: feat/module<br/>(Contributor Workspace)"]
+    C -->|Submit Pull Request| B
+    B -->|Supervisory Approval & Merge| A
 ```
 
 ### Stage 1: Synchronize Workspace

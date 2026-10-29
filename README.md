@@ -1,4 +1,4 @@
-﻿# PiGO Framework â€” Enterprise AI & Multi-Tier Collaboration
+# PiGO Framework - Enterprise AI & Multi-Tier Collaboration
 
 **Palalloi Integrate Gravity Orchestra (v13.3 Enterprise + Multi-Tier Collaboration)** | Production AI Agent Governance & Team Engineering Ecosystem
 
@@ -19,7 +19,7 @@ Framework ini menjamin:
 
 ---
 
-## ðŸ‘¥ Ekosistem Kolaborasi & Tata Kelola Tim (Team Governance)
+## Ekosistem Kolaborasi & Tata Kelola Tim (Team Governance)
 
 Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise yang diuraikan lengkap pada [**COLLABORATION_GUIDE.md**](COLLABORATION_GUIDE.md):
 
@@ -29,12 +29,13 @@ Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise ya
 - **Module Contributor & Feature Developer** *(Implementation Team)*: Pengembang fitur mandiri pada branch terisolasi, pelaksana pengujian lokal, dan inisiator Pull Request terstandar.
 
 ### 2. Standar Alur Kerja 5 Tahap (5-Stage Pipeline)
-```
-[main] â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬ (Solely merged by Principal Architect)
-                                  â”‚
-[staging] â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´ (Supervisory Testing & Staging)
-                â”‚ (git checkout -b)
-[feat/module] â”€â”€â”´â”€â”€â”€ (Contributor Workspace) â”€â”€â”€â–º [Submit Pull Request]
+
+```mermaid
+flowchart TD
+    A["Branch: main<br/>(Production Release)"] --- B["Branch: staging<br/>(Supervisory Testing & Staging)"]
+    B -->|git checkout -b| C["Branch: feat/module<br/>(Contributor Workspace)"]
+    C -->|Submit Pull Request| B
+    B -->|Supervisory Approval & Merge| A
 ```
 
 ### 3. Otomasi Template GitHub
@@ -43,7 +44,7 @@ Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise ya
 
 ---
 
-## ðŸ›¡ï¸ Fitur Pertahanan Enterprise v13.3
+## Fitur Pertahanan Enterprise v13.3
 
 ### 1. Pertahanan Aplikasi Menyeluruh (Defense-in-Depth)
 - **Validasi Skema Sisi Server (Server-Side Schema Validation)**: Validasi tipe data, batas panjang, dan regex di controller sebelum menyentuh database.
@@ -62,18 +63,18 @@ Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise ya
 
 ### 4. Kontinuitas Sesi & Anti-Stuck Escalation
 - Verifikasi wajib `working.md` di awal sesi untuk menyambung tugas tertunda (*Orphaned Tasks*).
-- Eskalasi otomatis ke manusia jika percobaan perbaikan gagal $\ge 5$ kali atau macet $> 10$ menit.
+- Eskalasi otomatis ke manusia jika percobaan perbaikan gagal >= 5 kali atau macet > 10 menit.
 
 ---
 
 ## Riwayat Evolusi
 
 | Versi | Highlight Utama | Catatan Audit |
-|-------|-----------------|---------------|
-| v1.0â€“v2.0 | Fondasi Batasan & Security Hardening | Perlindungan OWASP Top 10 |
-| v6.0â€“v7.0 | Clean MVC & Anti-Bypass Checklist | Standarisasi validasi & sintaks |
-| v8.0â€“v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
-| v11.0â€“v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
+|---|---|---|
+| v1.0 - v2.0 | Fondasi Batasan & Security Hardening | Perlindungan OWASP Top 10 |
+| v6.0 - v7.0 | Clean MVC & Anti-Bypass Checklist | Standarisasi validasi & sintaks |
+| v8.0 - v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
+| v11.0 - v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
 | v13.0 | Resilience Engine (RRE) & Stack Adaptation | Audit awal via Claude Haiku 4.5 |
 | v13.1 | Session Continuity & File-Based Concurrency | Konsensus Multi-Agent (Gemini, Haiku, Opus) |
 | v13.2 | Production Security Hardening & Zero-Leakage | Anti-IDOR, Rate-Limiting, Idempotency |
@@ -82,7 +83,7 @@ Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise ya
 
 ---
 
-## âš¡ Pintasan Perintah PiGO (PiGO Shortcuts)
+## Pintasan Perintah PiGO (PiGO Shortcuts)
 
 | Perintah | Deskripsi Tindakan Agen |
 |---|---|
@@ -95,7 +96,7 @@ Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise ya
 
 ---
 
-## ðŸ“¦ Verifikasi Integritas Arsip Rilis
+## Verifikasi Integritas Arsip Rilis
 
 | Rilis | Berkas Arsip | Hash SHA256 |
 |---|---|---|
