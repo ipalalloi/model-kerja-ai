@@ -1,103 +1,98 @@
-# Panduan Kolaborasi Proyek (Dosen & Mahasiswa)
-*PiGO Framework Collaboration Standard — Pedoman Kerja Tim Terpadu (Oktober 2026)*
+# Collaboration & Team Engineering Guide
+*PiGO Framework Collaboration Standard — Professional Multi-Tier Engineering Workflow (Oktober 2026)*
 
-Selamat datang di tim pengembang proyek! Panduan ini dirancang agar Dosen dan Mahasiswa dapat berkolaborasi secara rapi, produktif, dan aman tanpa risiko merusak kode utama sistem.
+Welcome to the engineering team! This guide establishes professional collaboration standards for **Project Leads**, **Supervisors / Reviewers**, and **Module Contributors** to build robust, scalable, and production-grade software together seamlessly without risking system regressions or data breaches.
 
 ---
 
-## 👥 1. Pembagian Peran (Role & Responsibility)
+## 👥 1. Role & Responsibility Matrix
 
-| Peran | Pelaksana | Tanggung Jawab Utama |
+| Professional Role | Designation | Primary Responsibilities |
 |---|---|---|
-| **Project Lead / Tech Architect** | Anda (Dosen Penanggung Jawab) | Mengelola branch `main`, approval Pull Request, kredensial production, dan arsitektur inti. |
-| **Co-Architect / Core Reviewer** | Dosen Kolaborator | Mereview kesesuaian alur bisnis/riset, validasi instrumen, dan pengujian fitur. |
-| **Feature Developer** | Mahasiswa | Mengembangkan modul/fitur spesifik di branch masing-masing, menulis kode bersih, dan mengajukan Pull Request. |
+| **Principal Architect & Project Lead** | Lead Maintainer | Owns the `main` branch, governs system architecture, enforces security policies, approves production releases, and manages environment secrets. |
+| **System Supervisor & Core Reviewer** | Review Authority | Validates business logic, conducts architectural and code reviews, oversees milestone delivery, and mentors contributors. |
+| **Module Contributor & Feature Developer** | Implementation Engineer | Builds isolated features/modules on dedicated branches, maintains clean MVC patterns, validates locally, and submits structured Pull Requests. |
 
 ---
 
-## 🌿 2. Alur Kerja Git (Git Workflow 5 Langkah)
+## 🌿 2. Git Workflow (5-Stage Standard Pipeline)
 
-Setiap pengembang **DILARANG KERAS** melakukan commit langsung ke branch `main`. Seluruh pengerjaan fitur wajib melalui alur berikut:
+Direct commits to the `main` production branch are **strictly prohibited**. All feature implementations and bugfixes must traverse this standardized pipeline:
 
 ```
-[main] ───────────────────────────┬ (Hanya Project Lead yang merge)
+[main] ───────────────────────────┬ (Solely merged by Principal Architect)
                                   │
-[staging] ──────┬─────────────────┴ (Area Uji Integrasi Tim)
-                │ (checkout -b)
-[feat/modul] ───┴─── (Mahasiswa ngoding di sini) ───► [Buka Pull Request]
+[staging] ──────┬─────────────────┴ (Integration & Supervisory Testing)
+                │ (git checkout -b)
+[feat/module] ──┴─── (Contributor Workspace) ───► [Submit Pull Request]
 ```
 
-### Langkah 1: Ambil Kode Terbaru
-Sebelum mulai membuat fitur baru, pastikan branch lokal Anda sinkron dengan server:
+### Stage 1: Synchronize Workspace
+Before starting any new task, ensure your local integration branch is synchronized with upstream:
 ```bash
 git checkout staging
 git pull origin staging
 ```
 
-### Langkah 2: Buat Branch Fitur Mandiri
-Gunakan format nama branch: `feat/<nama-panggilan>-<nama-fitur>` atau `fix/<nama-panggilan>-<nama-bug>`.
+### Stage 2: Create an Isolated Feature Branch
+Branch naming convention: `feat/<contributor-name>-<module-name>` or `fix/<contributor-name>-<bug-summary>`.
 ```bash
-git checkout -b feat/budi-modul-kuisioner
+git checkout -b feat/alex-assessment-scoring
 ```
 
-### Langkah 3: Kerjakan Fitur & Gunakan Database Lokal
-- Gunakan database development lokal (XAMPP/Docker).
-- **Dilarang keras** menghubungkan laptop ke database server production.
-- Manfaatkan AI Assistant (Antigravity/Cursor/VSCode) yang mematuhi pedoman `.agents/AGENTS.md`.
+### Stage 3: Develop Locally with Environment Isolation
+- Run against local development environments (XAMPP / Docker / Local DB).
+- **Never connect development instances to production databases**.
+- Leverage your AI pair-programmer under `.agents/AGENTS.md` guidelines.
 
-### Langkah 4: Uji Coba & Periksa Mandiri (Pre-Commit Check)
-Sebelum commit, pastikan:
-1. Tidak ada file `.env`, kredensial, atau password asli yang ikut ter-stage (`git status`).
-2. Kode bebas dari error sintaks (misal via terminal: `php -l nama_file.php`).
-3. Kueri data personal sudah mengikat hak milik pengguna (`WHERE id = :id AND user_id = :current_user_id` / Anti-IDOR).
+### Stage 4: Self-Audit & Pre-Commit Verification
+Before staging changes:
+1. Ensure no credentials, API keys, or `.env` files are tracked (`git status`).
+2. Run syntax and type checks locally via CLI (e.g., `php -l <file>` or `npm run build`).
+3. Enforce **Anti-IDOR Owner Binding** on all user-scoped data mutations (`WHERE id = :id AND user_id = :current_user`).
 
-Lakukan commit dengan pesan yang jelas:
+Commit with clear, conventional messages:
 ```bash
 git add .
-git commit -m "feat: tambah form input kuisioner mahasiswa"
+git commit -m "feat(assessment): implement scoring evaluation algorithm"
 ```
 
-### Langkah 5: Push ke GitHub & Buka Pull Request (PR)
-Kirim branch fitur Anda ke GitHub:
+### Stage 5: Publish Branch & Initiate a Pull Request (PR)
+Push your feature branch to the remote repository:
 ```bash
-git push -u origin feat/budi-modul-kuisioner
+git push -u origin feat/alex-assessment-scoring
 ```
-Buka repositori di GitHub, lalu klik tombol **"Compare & pull request"**:
-- **Base repository**: `staging` (bukan langsung ke `main`).
-- **Head repository**: `feat/budi-modul-kuisioner`.
-- Isi formulir deskripsi PR dan centang seluruh checklist yang tersedia.
+Navigate to GitHub and create a **Pull Request**:
+- **Base branch**: `staging` (never target `main` directly).
+- **Compare branch**: `feat/alex-assessment-scoring`.
+- Complete the PR checklist and request review from your assigned **System Supervisor**.
 
 ---
 
-## 🔒 3. Aturan Ketat Keamanan (Zero-Leakage & Safety Rules)
+## 🔒 3. Enterprise Security & Quality Directives
 
-1. **Kerahasiaan Kredensial**:
-   - Seluruh password database, token rahasia, dan API key wajib berada di file `.env`.
-   - File `.env` sudah masuk `.gitignore` dan tidak boleh dipaksa di-commit (`git add -f`).
-   - Gunakan `.env.example` sebagai contoh variabel yang dibutuhkan.
-2. **Anti-IDOR (Insecure Direct Object Reference)**:
-   - Dilarang membuat kueri baca/ubah yang hanya mengandalkan ID dari URL (`?id=5`) tanpa memastikan data tersebut milik user yang sedang login.
-3. **Pencegahan SQL Injection & XSS**:
-   - Wajib menggunakan *Prepared Statements* (PDO dengan parameter `:bind`).
-   - Seluruh variabel yang dicetak ke HTML wajib melalui `htmlspecialchars()`.
-4. **File Upload Aman**:
-   - Upload berkas wajib memverifikasi tipe MIME asli (bukan hanya ekstensi), nama file diacak (*hash*), dan disimpan di luar folder kode eksekusi.
-
----
-
-## 💡 4. Tips Menggunakan Asisten AI Bersama PiGO Framework
-
-Jika Anda menggunakan asisten koding AI (Google Antigravity, Cursor, GitHub Copilot, atau Claude Code):
-- Di folder proyek sudah tersedia file `.agents/AGENTS.md`. File ini adalah "pengawas otomatis" standar kualitas tim kita.
-- Anda dapat mengetik instruksi singkat di terminal/chat AI:
-  - `pigo test` : Untuk meminta AI menguji sintaks berkas yang baru saja Anda edit.
-  - `pigo fix` : Jika menemukan error, minta AI mencari log dan memperbaikinya.
-  - `pigo audit` : Meminta AI memvalidasi apakah kode Anda sudah memenuhi standar keamanan sebelum membuat Pull Request.
+1. **Zero-Leakage Policy**:
+   - Secrets, database credentials, and private keys must remain strictly in `.env`.
+   - `.env` is permanently excluded via `.gitignore`. Refer to `.env.example` for required variables.
+2. **Role-Aware Anti-IDOR**:
+   - Direct object references must always verify authorization: `(user_id = :current_user OR :role = 'admin')`.
+3. **Defensive Input & Output Sanitization**:
+   - Validate input parameters on the server side (type, length, schema).
+   - Sanitize all view renderings with `htmlspecialchars(..., ENT_QUOTES, 'UTF-8')`.
+4. **Subresource Integrity (SRI)**:
+   - External CDN assets must include `integrity="sha384-..."` and `crossorigin="anonymous"`.
 
 ---
 
-## ❓ 5. Bantuan & Pertanyaan Kendala
-Jika Anda mengalami kebuntuan atau menemukan *conflict branch* saat git merge:
-1. Diskusikan di kanal tim / grup komunikasi riset.
-2. Tag Dosen Penanggung Jawab pada Issue atau Pull Request di GitHub.
-3. Jangan pernah melakukan `git push --force` ke branch bersama!
+## ⚡ 4. Utilizing AI Pair-Programming (PiGO Shortcuts)
+
+Contributors using AI-assisted IDEs (Google Antigravity, Cursor, VS Code) can utilize PiGO shortcuts for autonomous compliance checks:
+- `pigo test` : Validates syntax and regression checks across touched files.
+- `pigo fix`  : Diagnoses terminal/execution logs and resolves bugs autonomously.
+- `pigo audit`: Validates security headers, Anti-IDOR, and pre-commit secret scans before submitting PRs.
+
+---
+
+## 🤝 5. Escalation & Code Review Etiquette
+- For blocking architectural dilemmas, tag your **System Supervisor** on the GitHub Issue or PR thread.
+- Resolving merge conflicts should be done via rebase or merging `staging` into your feature branch locally. Never execute `git push --force` on shared branches.

@@ -1,27 +1,29 @@
 ---
-name: Penugasan Modul / Fitur (Task Assignment)
-about: Buat kartu tugas terstruktur untuk mahasiswa atau kolaborator
-title: "[TASK] <Nama Fitur / Modul>"
-labels: enhancement, task
+name: Feature & Module Delegation (Work Item)
+about: Structured task assignment for Contributors and Collaborators
+title: "[MODULE] <Feature / Component Name>"
+labels: enhancement, module
 assignees: ''
 ---
 
-### 🎯 Sasaran Fitur
-*Jelaskan tujuan dari modul/fitur ini secara spesifik:*
+### 🎯 Objective & Business Value
+*Describe the feature scope, objective, and anticipated outcome:*
 
-### 📋 Kebutuhan Alur Bisnis & UI
-1. Halaman / Endpoint: 
-2. Input yang diterima:
-3. Output / Tampilan yang diharapkan:
+### 📋 Technical Specifications & Interfaces
+1. Target Route / Controller / Endpoint:
+2. Input Schema & Data Types:
+3. UI State Expectations (Loading / Empty / Feedback):
 
-### 🗄️ Kebutuhan Database (Jika Ada)
-- Tabel yang disentuh:
-- Kolom baru / relasi:
+### 🗄️ Database & Model Dependencies
+- Affected Tables:
+- Migrations / Schema Additions:
 
-### ⏱️ Target Waktu Pengerjaan
-- Ditugaskan kepada: @mahasiswa
-- Target selesai: YYYY-MM-DD
+### 👥 Engineering Governance
+- **Lead Supervisor**: @supervisor
+- **Assigned Contributor**: @contributor
+- **Target Milestone / Due Date**: YYYY-MM-DD
 
-### 📌 Catatan Khusus
-- Kerjakan di branch: `feat/<nama>-<fitur>`
-- Buka Pull Request ke branch: `staging`
+### 📌 Development Directives
+- Branch convention: `feat/<contributor>-<module>`
+- Target integration branch: `staging`
+- Adhere strictly to `.agents/AGENTS.md` v13.3 security & architecture directives.

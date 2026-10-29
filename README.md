@@ -1,46 +1,52 @@
-# PiGO Framework — Model Kerja AI & Ekosistem Kolaborasi
+﻿# PiGO Framework â€” Enterprise AI & Multi-Tier Collaboration
 
-**Palalloi Integrate Gravity Orchestra (v13.3 Enterprise + Academic Collaboration)** | Sistem Pengendalian Agen AI & Model Kolaborasi Riset/Projek Dosen & Mahasiswa
+**Palalloi Integrate Gravity Orchestra (v13.3 Enterprise + Multi-Tier Collaboration)** | Production AI Agent Governance & Team Engineering Ecosystem
 
 [![Version](https://img.shields.io/badge/version-13.3%20Enterprise-blue)](https://github.com/ipalalloi/model-kerja-ai)
 [![Security](https://img.shields.io/badge/security-production--hardened-red)]()
-[![Collaboration](https://img.shields.io/badge/collaboration-academic--ready-orange)](COLLABORATION_GUIDE.md)
+[![Team Governance](https://img.shields.io/badge/team%20governance-lead%20%7C%20supervisor%20%7C%20contributor-orange)](COLLABORATION_GUIDE.md)
 [![Audit Status](https://img.shields.io/badge/audit-passed--90%2B-brightgreen)]()
 
 ---
 
 ## Apa itu PiGO Framework?
 
-PiGO Framework adalah sistem pedoman arsitektur, model kerja otonom (`AGENTS.md`), dan standar kolaborasi tim yang berfungsi sebagai **sistem saraf dan batasan integritas** bagi pengembang (Dosen, Mahasiswa, Peneliti) serta agen AI (Google Antigravity, Gemini, Claude, OpenRouter) saat bekerja pada proyek perangkat lunak.
+PiGO Framework adalah sistem pedoman arsitektur, tata kelola model kerja otonom AI (`AGENTS.md`), dan standar kolaborasi rekayasa perangkat lunak yang berfungsi sebagai **sistem saraf dan batasan integritas** bagi pengembang lintas peran (**Project Leads, System Supervisors, Module Contributors**) serta agen AI (Google Antigravity, Gemini, Claude, OpenRouter).
 
-Framework ini memastikan:
-1. **Agen AI Bekerja Mandiri & Aman**: Otonom pada tugas rutin (*Zero-Friction*), terkunci dari tindakan perusakan database (*Hard Boundaries*), dan tidak membocorkan kredensial (*Pre-Commit Secret Scanner*).
-2. **Kolaborasi Tim Akademik Teratur**: Dosen dan mahasiswa dapat berbagi peran secara jelas tanpa risiko merusak kode utama sistem atau membocorkan data produksi.
-
----
-
-## 👥 Ekosistem Kolaborasi Dosen & Mahasiswa (Academic Collaboration)
-
-Repositori ini kini dilengkapi dengan panduan dan template kolaborasi terpadu di folder root dan `.github/`:
-
-### 1. [Panduan Kolaborasi Lengkap (`COLLABORATION_GUIDE.md`)](COLLABORATION_GUIDE.md)
-- **Matriks Peran (Role Matrix)**:
-  - **Project Lead / Tech Architect (Dosen Penanggung Jawab)**: Pemegang kendali branch `main`, approval Pull Request, dan manajemen environment server.
-  - **Co-Architect / Core Reviewer (Dosen Rekan)**: Pengawas logika bisnis, instrumen asesmen, dan luaran penelitian.
-  - **Feature Developer (Mahasiswa)**: Pengembang modul di branch fitur mandiri dengan database development lokal (data dummy).
-- **Alur Kerja Git 5 Langkah**: Standarisasi pembuatan branch `feat/<nama>-<modul>` $\rightarrow$ coding dengan panduan PiGO AI $\rightarrow$ pengajuan Pull Request ke branch `staging`.
-- **Isolasi Database**: Mahasiswa dilarang keras memegang koneksi database server production; seluruh pengembangan lokal wajib menggunakan `.env.example`.
-
-### 2. Template GitHub Terintegrasi
-- **Pull Request Template (`.github/PULL_REQUEST_TEMPLATE.md`)**: Setiap PR wajib mencentang checklist kepatuhan PiGO Framework (Uji sintaks lokal, Anti-IDOR, Zero-Leakage, target ke branch `staging`).
-- **Issue Task Template (`.github/ISSUE_TEMPLATE/task-template.md`)**: Format terstandar bagi Dosen untuk membagikan tugas modul/fitur ke mahasiswa lengkap dengan sasaran alur dan tenggat waktu.
+Framework ini menjamin:
+1. **Otonomi Agen AI Terkendali**: Mandiri pada pekerjaan rutin (*Zero-Friction*), terkunci dari tindakan destruktif (*Hard Boundaries*), kebal kegagalan (*Resilience Engine*), dan memindai kebocoran kredensial secara otomatis (*Automated Pre-Commit Scanner*).
+2. **Rekayasa Tim Bertingkat (Multi-Tier Collaboration)**: Memisahkan kewenangan rilis produksi dengan lingkungan pengembangan modular secara aman dan terstruktur.
 
 ---
 
-## 🛡️ Fitur Pertahanan Enterprise v13.3
+## ðŸ‘¥ Ekosistem Kolaborasi & Tata Kelola Tim (Team Governance)
+
+Repositori ini menerapkan tata kelola kolaborasi modern berstandar enterprise yang diuraikan lengkap pada [**COLLABORATION_GUIDE.md**](COLLABORATION_GUIDE.md):
+
+### 1. Matriks Peran Profesional (Role Matrix)
+- **Principal Architect & Project Lead** *(Supervisory Authority)*: Pemegang kewenangan penuh atas branch `main`, pengesah rilis produksi, penanggung jawab keamanan, dan pengelola rahasia environment.
+- **System Supervisor & Core Reviewer** *(Review Authority)*: Pengawas kesesuaian arsitektur, reviewer kode tingkat pertama, pembimbing teknis modul, dan penilai kualitas Pull Request.
+- **Module Contributor & Feature Developer** *(Implementation Team)*: Pengembang fitur mandiri pada branch terisolasi, pelaksana pengujian lokal, dan inisiator Pull Request terstandar.
+
+### 2. Standar Alur Kerja 5 Tahap (5-Stage Pipeline)
+```
+[main] â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬ (Solely merged by Principal Architect)
+                                  â”‚
+[staging] â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´ (Supervisory Testing & Staging)
+                â”‚ (git checkout -b)
+[feat/module] â”€â”€â”´â”€â”€â”€ (Contributor Workspace) â”€â”€â”€â–º [Submit Pull Request]
+```
+
+### 3. Otomasi Template GitHub
+- **Pull Request Template (`.github/PULL_REQUEST_TEMPLATE.md`)**: Checklist kepatuhan wajib bagi Contributor (validasi lokal, Anti-IDOR, Zero-Leakage, target ke branch `staging`).
+- **Issue Task Template (`.github/ISSUE_TEMPLATE/task-template.md`)**: Penugasan modul terstruktur dari Supervisor kepada Contributor dengan rincian spesifikasi teknis dan target milestone.
+
+---
+
+## ðŸ›¡ï¸ Fitur Pertahanan Enterprise v13.3
 
 ### 1. Pertahanan Aplikasi Menyeluruh (Defense-in-Depth)
-- **Validasi Skema Sisi Server (Server-Side Schema Validation)**: Input request wajib divalidasi tipe data, batas panjang, dan regex di controller.
+- **Validasi Skema Sisi Server (Server-Side Schema Validation)**: Validasi tipe data, batas panjang, dan regex di controller sebelum menyentuh database.
 - **Proteksi CSRF Wajib**: Setiap request mutasi data (`POST`/`PUT`/`DELETE`) wajib memvalidasi token CSRF acak berbasis sesi selain cookie `SameSite=Strict`.
 - **Role-Aware Anti-IDOR**: Kueri manipulasi data terikat kepemilikan pengguna: `WHERE id = :id AND (user_id = :current_user OR :role = 'admin')`.
 - **Rate-Limiting Komprehensif**: Pembatasan frekuensi pada login, OTP, pencarian masif, dan upload file.
@@ -64,19 +70,19 @@ Repositori ini kini dilengkapi dengan panduan dan template kolaborasi terpadu di
 
 | Versi | Highlight Utama | Catatan Audit |
 |-------|-----------------|---------------|
-| v1.0–v2.0 | Fondasi Batasan & Security Hardening | Perlindungan OWASP Top 10 |
-| v6.0–v7.0 | Clean MVC & Anti-Bypass Checklist | Standarisasi validasi & sintaks |
-| v8.0–v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
-| v11.0–v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
+| v1.0â€“v2.0 | Fondasi Batasan & Security Hardening | Perlindungan OWASP Top 10 |
+| v6.0â€“v7.0 | Clean MVC & Anti-Bypass Checklist | Standarisasi validasi & sintaks |
+| v8.0â€“v10.0 | Autonomous Goal-Pursuing & Zero-Friction | Eksekusi otonom terpandu & Branding PiGO |
+| v11.0â€“v12.0 | Antigravity 2.0 & Dual-Tier Token Budgeting | Workhorse Tier 1 (Flash) + Frontier Tier 2 |
 | v13.0 | Resilience Engine (RRE) & Stack Adaptation | Audit awal via Claude Haiku 4.5 |
 | v13.1 | Session Continuity & File-Based Concurrency | Konsensus Multi-Agent (Gemini, Haiku, Opus) |
 | v13.2 | Production Security Hardening & Zero-Leakage | Anti-IDOR, Rate-Limiting, Idempotency |
 | v13.3 | Enterprise Production Grade | Automated Pre-Commit Scanner, CSRF, Server-Side Input Schema, Role-Aware IDOR, & File Locking |
-| **v13.3 + Collab** | **Academic Collaboration & Multi-User Workflow** | **Panduan Kolaborasi Dosen-Mahasiswa, PR Template, Issue Task Template, & Branch Isolation** |
+| **v13.3 + Enterprise Collab** | **Professional Multi-Tier Collaboration** | **Role Matrix (Lead, Supervisor, Contributor), PR Template, Issue Work Item Template, & Staging Isolation** |
 
 ---
 
-## ⚡ Pintasan Perintah PiGO (PiGO Shortcuts)
+## âš¡ Pintasan Perintah PiGO (PiGO Shortcuts)
 
 | Perintah | Deskripsi Tindakan Agen |
 |---|---|
@@ -89,11 +95,11 @@ Repositori ini kini dilengkapi dengan panduan dan template kolaborasi terpadu di
 
 ---
 
-## 📦 Verifikasi Integritas Arsip Rilis
+## ðŸ“¦ Verifikasi Integritas Arsip Rilis
 
 | Rilis | Berkas Arsip | Hash SHA256 |
 |---|---|---|
-| **v13.3 + Collab** | `model_kerja_v13.3_with_collaboration.zip` | `BDCB3B2FF75921122616AD68DEB34823BAA06BA1697E1071D4AC87B7CD7E0B7F` |
+| **v13.3 + Enterprise Collab** | `model_kerja_v13.3_enterprise_collaboration.zip` | `9EAE679AA078A6ECDD253EC986BEBB61CA4DBB0471A14392D89633069FE09A6F` |
 | v13.3 | `model_kerja_v13.3_enterprise_production.zip` | `580DE45132DFBDA305FF7F4E665BEE4A3F9029397715D3BDC848DDD31C497B98` |
 | v13.2 | `model_kerja_v13.2_production_hardened.zip` | `2D518C105C3B19F6863E8C5B1B43BA5D4D61C937E1E0B0C2A5CE33F43D371D5D` |
 | v13.1 | `model_kerja_v13.1_battle_tested.zip` | `FDD69A81791FA804FD115A9F9FE6E8894AE4D3EDF4268D0CF061D7A5B8960E18` |
