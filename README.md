@@ -1,8 +1,9 @@
 # PiGO Framework - Enterprise AI & Multi-Tier Collaboration
 
-**Palalloi Integrate Gravity Orchestra (v13.4 Enterprise + CI-Ready)** | Production AI Agent Governance & Team Engineering Ecosystem
+**Palalloi Integrate Gravity Orchestra (v13.4 Enterprise + PIOM DSOM-009 Aligned)** | Production AI Agent Governance & Team Engineering Ecosystem
 
 [![Version](https://img.shields.io/badge/version-13.4%20Enterprise-blue)](https://github.com/ipalalloi/model-kerja-ai)
+[![Governance](https://img.shields.io/badge/governance-PIOM--SDCM%20v0.9%20Baseline%20A-purple)](https://github.com/ipalalloi/model-kerja-ai)
 [![Security](https://img.shields.io/badge/security-production--hardened-red)]()
 [![CI Pipeline](https://img.shields.io/badge/ci-php--lint%20%7C%20gitleaks-brightgreen)](.github/workflows/ci.yml)
 [![Team Governance](https://img.shields.io/badge/team%20governance-lead%20%7C%20supervisor%20%7C%20contributor-orange)](COLLABORATION_GUIDE.md)
@@ -14,10 +15,31 @@
 
 PiGO Framework adalah sistem pedoman arsitektur, tata kelola model kerja otonom AI (`AGENTS.md`), dan standar kolaborasi rekayasa perangkat lunak yang berfungsi sebagai **sistem saraf dan batasan integritas** bagi pengembang lintas peran (**Project Leads, System Supervisors, Module Contributors**) serta agen AI (Google Antigravity, Gemini, Claude, OpenRouter).
 
-Framework ini menjamin:
-1. **Otonomi Agen AI Terkendali**: Mandiri pada pekerjaan rutin (*Zero-Friction*), terkunci dari tindakan destruktif (*Hard Boundaries*), kebal kegagalan (*Resilience Engine*), dan memindai kebocoran kredensial secara otomatis (*Automated Secret Scanner & Gitleaks CI*).
-2. **Rekayasa Tim Bertingkat (Multi-Tier Collaboration)**: Memisahkan kewenangan rilis produksi dengan lingkungan pengembangan modular secara aman dan terstruktur.
-3. **Produksi Tanpa Kebocoran (Zero-Leakage & Defense-in-Depth)**: Dilengkapi proteksi HTTP Security Headers, parser `.env` kebal error, Anti-IDOR, dan CSRF token.
+PiGO beroperasi sebagai **NEXUS Execution Adapter** di bawah model tata kelola kanonik **PIOM (Palalloi Integrated Operating Model)** dan metodologi **SDCM v0.9 (Core Freeze)**.
+
+### 🏛️ Pemisahan 4 Entitas Tata Kelola (Ontology Separation):
+1. **PIOM**: Model tata kelola, registri keputusan, dan matriks kebijakan (*Policy & Decision Registry*).
+2. **SDCM**: Metode rekayasa perangkat lunak terkendali (*Controlled Software Development Method*).
+3. **NEXUS / PiGO**: Sistem eksekusi dan orkestrasi teknis agen AI (*Autonomous Execution Adapter*).
+4. **PIOM-ESAR / APF**: Publikasi riset akademik dan evaluasi empiris independen.
+
+---
+
+## Keselarasan PIOM DSOM-009 (November 2026)
+
+PiGO Framework v13.4 menyelaraskan 4 pilar tata kelola terbaru dari review kanonik **PIOM DSOM-009**:
+
+1. **Pembedaan Mutlak `GATE_CHECK: PASS` vs `OWNER GO`**:
+   - Lolosnya pengujian mesin deterministik (`pigo test`, linter sintaks `php -l`, atau GitHub Actions CI) HANYA berstatus `GATE_CHECK: PASS`.
+   - Hal tersebut **DILARANG** diartikan sebagai `OWNER GO`. Otoritas merger ke branch `main` atau deployment produksi mutlak membutuhkan persetujuan manusia dari **Principal Architect / Project Owner**.
+2. **Efisiensi Sesi (Session Economy)**:
+   - `EVIDENCE_SESSION`: Terdapat artefak bukti primer baru / perubahan kode substantif.
+   - `MAINTENANCE_SESSION`: Sesi pemeriksaan status / sinkronisasi memori. **DILARANG membuat ZIP rilis baru** untuk mencegah inflasi artefak.
+   - `DESIGN_CHANGE_SESSION`: Modifikasi kebijakan desain; tidak boleh menganggap temuan operasional selesai sepihak.
+3. **Data Pendidikan Berisiko Tinggi (*High-Stakes Educational Gate*)**:
+   - Perubahan logika, formula, atau mutasi data yang berdampak pada penilaian mahasiswa, instrumen asesmen, atau luaran akreditasi wajib melalui *Human Approval Gate*.
+4. **Penanganan Tugas Macet (*Stalled Task Handling*)**:
+   - Tugas yang tidak bergerak selama $\ge 2$ sesi atau $\ge 7$ hari diberi flag `stalled=true` dan dieskalasi ke antrean keputusan manusia (*Human Action Queue*), bukan di-bypass atau di-close sepihak.
 
 ---
 
@@ -79,7 +101,7 @@ flowchart TD
 | v13.1 | Session Continuity & File-Based Concurrency | Konsensus Multi-Agent (Gemini, Haiku, Opus) |
 | v13.2 | Production Security Hardening & Zero-Leakage | Anti-IDOR, Rate-Limiting, Idempotency |
 | v13.3 | Enterprise Production Grade & Governance | Role Matrix (Lead, Supervisor, Contributor), PR/Issue Template |
-| **v13.4** | **Production Hardened & CI-Ready Edition** | **Evaluasi Komprehensif Claude: .env.example, task.md, ci.yml, CODEOWNERS, Parser Fix, Security Headers, Relative Packaging** |
+| **v13.4** | **PIOM DSOM-009 & CI-Ready Edition** | **Keselarasan PIOM-SDCM v0.9 Baseline A, Pemisahan Gate Pass vs Owner GO, Session Economy, dan High-Stakes Gate** |
 
 ---
 
@@ -103,7 +125,6 @@ flowchart TD
 | **v13.4** | `model_kerja_v13.4_production_ci_ready.zip` | `4897033A1EDA97B90DDE80AE436FF09CABC9B0C086810FCF3D3FBF105B2FD030` |
 | v13.3 + Collab | `model_kerja_v13.3_enterprise_collaboration.zip` | `9EAE679AA078A6ECDD253EC986BEBB61CA4DBB0471A14392D89633069FE09A6F` |
 | v13.3 | `model_kerja_v13.3_enterprise_production.zip` | `580DE45132DFBDA305FF7F4E665BEE4A3F9029397715D3BDC848DDD31C497B98` |
-| v13.2 | `model_kerja_v13.2_production_hardened.zip` | `2D518C105C3B19F6863E8C5B1B43BA5D4D61C937E1E0B0C2A5CE33F43D371D5D` |
 
 ---
 *Dikelola dan dikembangkan oleh [@ipalalloi](https://github.com/ipalalloi)*
