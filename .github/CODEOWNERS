@@ -1,0 +1,17 @@
+# ==============================================================================
+# CODEOWNERS — PiGO Framework Team Governance
+# Menetapkan peninjau wajib otomatis berdasarkan path berkas di GitHub
+# ==============================================================================
+
+# Review default seluruh modul membutuhkan persetujuan Supervisor
+* @ipalalloi
+
+# Modul arsitektur inti, keamanan, dan konfigurasi — Wajib Lead Approval
+.agents/AGENTS.md    @ipalalloi
+config/              @ipalalloi
+.github/             @ipalalloi
+.htaccess            @ipalalloi
+uploads/.htaccess    @ipalalloi
+
+# Migrasi database — Wajib Lead Review
+migrations/          @ipalalloi

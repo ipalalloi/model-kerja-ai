@@ -1,20 +1,59 @@
-﻿# System & OS Junk
-Thumbs.db
-.DS_Store
-desktop.ini
+# ==============================================================================
+# PiGO Framework — .gitignore (v13.4 Production Hardened)
+# ==============================================================================
 
-# Environment Credentials
+# === ENVIRONMENT & KREDENSIAL RAHASIA (WAJIB TERPROTEKSI) ===
 .env
+.env.*
 .env.local
 .env.production
-.env.development
+credentials.json
+*.pem
+*.key
+id_rsa*
+*.p12
+*.pfx
 
-# Editor & IDE
+# === OS & IDE JUNK ===
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
-*.tmp
+*.swo
 
-# Vendor & Dependencies
-node_modules/
+# === DEPENDENCIES & PACKAGE MANAGERS ===
 vendor/
+node_modules/
+
+# === OUTPUT RILIS DISTRIBUSI (BUILD ARTIFACTS) ===
+dist_upload_*.zip
+dist_upload.zip
+*.rar
+
+# === BERKAS SAMPAH & LOG ===
+*.old
+*.bak
+*.tmp
+*.log
+logs/
+
+# === DATABASE DUMP MENTAH (ROOT SAJA) ===
+# Melarang dump SQL di root; berkas di migrations/ tetap boleh di-commit!
+/*.sql
+!migrations/*.sql
+*.csv
+
+# === BERKAS INTERNAL AI DEV ===
+# CATATAN: .cursorrules DIKELUARKAN dari ignore agar tersinkronkan ke seluruh tim.
+_ai_context/
+*.ai_draft
+scratch/
+
+# === ASSET UPLOADS PENGGUNA ===
+uploads/
+
+# === LOCK FILES (KECUALIKAN PACKAGE MANAGER) ===
+*.lock
+!package-lock.json
+!composer.lock

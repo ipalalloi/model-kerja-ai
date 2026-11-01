@@ -1,9 +1,10 @@
 # PiGO Framework - Enterprise AI & Multi-Tier Collaboration
 
-**Palalloi Integrate Gravity Orchestra (v13.3 Enterprise + Multi-Tier Collaboration)** | Production AI Agent Governance & Team Engineering Ecosystem
+**Palalloi Integrate Gravity Orchestra (v13.4 Enterprise + CI-Ready)** | Production AI Agent Governance & Team Engineering Ecosystem
 
-[![Version](https://img.shields.io/badge/version-13.3%20Enterprise-blue)](https://github.com/ipalalloi/model-kerja-ai)
+[![Version](https://img.shields.io/badge/version-13.4%20Enterprise-blue)](https://github.com/ipalalloi/model-kerja-ai)
 [![Security](https://img.shields.io/badge/security-production--hardened-red)]()
+[![CI Pipeline](https://img.shields.io/badge/ci-php--lint%20%7C%20gitleaks-brightgreen)](.github/workflows/ci.yml)
 [![Team Governance](https://img.shields.io/badge/team%20governance-lead%20%7C%20supervisor%20%7C%20contributor-orange)](COLLABORATION_GUIDE.md)
 [![Audit Status](https://img.shields.io/badge/audit-passed--90%2B-brightgreen)]()
 
@@ -14,8 +15,9 @@
 PiGO Framework adalah sistem pedoman arsitektur, tata kelola model kerja otonom AI (`AGENTS.md`), dan standar kolaborasi rekayasa perangkat lunak yang berfungsi sebagai **sistem saraf dan batasan integritas** bagi pengembang lintas peran (**Project Leads, System Supervisors, Module Contributors**) serta agen AI (Google Antigravity, Gemini, Claude, OpenRouter).
 
 Framework ini menjamin:
-1. **Otonomi Agen AI Terkendali**: Mandiri pada pekerjaan rutin (*Zero-Friction*), terkunci dari tindakan destruktif (*Hard Boundaries*), kebal kegagalan (*Resilience Engine*), dan memindai kebocoran kredensial secara otomatis (*Automated Pre-Commit Scanner*).
+1. **Otonomi Agen AI Terkendali**: Mandiri pada pekerjaan rutin (*Zero-Friction*), terkunci dari tindakan destruktif (*Hard Boundaries*), kebal kegagalan (*Resilience Engine*), dan memindai kebocoran kredensial secara otomatis (*Automated Secret Scanner & Gitleaks CI*).
 2. **Rekayasa Tim Bertingkat (Multi-Tier Collaboration)**: Memisahkan kewenangan rilis produksi dengan lingkungan pengembangan modular secara aman dan terstruktur.
+3. **Produksi Tanpa Kebocoran (Zero-Leakage & Defense-in-Depth)**: Dilengkapi proteksi HTTP Security Headers, parser `.env` kebal error, Anti-IDOR, dan CSRF token.
 
 ---
 
@@ -38,32 +40,30 @@ flowchart TD
     B -->|Supervisory Approval & Merge| A
 ```
 
-### 3. Otomasi Template GitHub
+### 3. Otomasi Template GitHub & CI/CD
 - **Pull Request Template (`.github/PULL_REQUEST_TEMPLATE.md`)**: Checklist kepatuhan wajib bagi Contributor (validasi lokal, Anti-IDOR, Zero-Leakage, target ke branch `staging`).
 - **Issue Task Template (`.github/ISSUE_TEMPLATE/task-template.md`)**: Penugasan modul terstruktur dari Supervisor kepada Contributor dengan rincian spesifikasi teknis dan target milestone.
+- **GitHub Actions CI Workflow (`.github/workflows/ci.yml`)**: Otomasi pengujian sintaks seluruh berkas PHP (`php -l`) dan pemindaian kebocoran kredensial rahasia (*Gitleaks*).
+- **Code Ownership (`.github/CODEOWNERS`)**: Menetapkan peninjau wajib otomatis pada berkas-berkas arsitektur inti dan migrasi database.
 
 ---
 
-## Fitur Pertahanan Enterprise v13.3
+## Fitur Pertahanan Enterprise v13.4
 
 ### 1. Pertahanan Aplikasi Menyeluruh (Defense-in-Depth)
 - **Validasi Skema Sisi Server (Server-Side Schema Validation)**: Validasi tipe data, batas panjang, dan regex di controller sebelum menyentuh database.
 - **Proteksi CSRF Wajib**: Setiap request mutasi data (`POST`/`PUT`/`DELETE`) wajib memvalidasi token CSRF acak berbasis sesi selain cookie `SameSite=Strict`.
 - **Role-Aware Anti-IDOR**: Kueri manipulasi data terikat kepemilikan pengguna: `WHERE id = :id AND (user_id = :current_user OR :role = 'admin')`.
-- **Rate-Limiting Komprehensif**: Pembatasan frekuensi pada login, OTP, pencarian masif, dan upload file.
-- **Sanitasi Ganda XSS & Integritas CDN (SRI)**: Parser aman (*DOMPurify*) untuk input rich-text, `htmlspecialchars()` di view, dan hash `integrity="sha384-..."` pada CDN publik.
+- **HTTP Security Headers Lengkap**: CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, dan Permissions-Policy pada `.htaccess`.
+- **Parser `.env` Kebal Error**: Fungsi pemuat environment yang aman dari baris kosong/cacat serta sinkron dengan `getenv()`, `$_ENV`, dan `$_SERVER`.
 
-### 2. Pemindaian Otomatis Anti-Kebocoran (Automated Pre-Commit Scan)
-- Pemindaian otomatis `git diff --cached` terhadap pola regex secret:
-  `(?i)(api[_-]?key|secret|password|bearer|auth[_-]?token)\s*=\s*['\"][^'\"]{8,}['\"]`
+### 2. Pemindaian Otomatis Anti-Kebocoran (Automated Secret Scanner)
+- Pemindaian regex berlapis (`api_key`, `secret`, `password`, `define()`, `mysql://`) dan validasi pipeline CI Gitleaks di GitHub.
 - Commit otomatis dibatalkan jika ditemukan kredensial mentah di dalam kode sumber.
 
-### 3. Manajemen File Lock Subagen (`.lock`)
+### 3. Manajemen File Lock Subagen (`.lock`) & Registry Tugas
 - Penanda file `.lock` sementara (auto-timeout 5 menit) untuk mencegah tabrakan edit (*race condition*) antar subagen paralel tanpa dependensi Redis.
-
-### 4. Kontinuitas Sesi & Anti-Stuck Escalation
-- Verifikasi wajib `working.md` di awal sesi untuk menyambung tugas tertunda (*Orphaned Tasks*).
-- Eskalasi otomatis ke manusia jika percobaan perbaikan gagal >= 5 kali atau macet > 10 menit.
+- Dokumen registry tugas resmi di `.agents/task.md` dan memori kerja di `.agents/working.md`.
 
 ---
 
@@ -78,8 +78,8 @@ flowchart TD
 | v13.0 | Resilience Engine (RRE) & Stack Adaptation | Audit awal via Claude Haiku 4.5 |
 | v13.1 | Session Continuity & File-Based Concurrency | Konsensus Multi-Agent (Gemini, Haiku, Opus) |
 | v13.2 | Production Security Hardening & Zero-Leakage | Anti-IDOR, Rate-Limiting, Idempotency |
-| v13.3 | Enterprise Production Grade | Automated Pre-Commit Scanner, CSRF, Server-Side Input Schema, Role-Aware IDOR, & File Locking |
-| **v13.3 + Enterprise Collab** | **Professional Multi-Tier Collaboration** | **Role Matrix (Lead, Supervisor, Contributor), PR Template, Issue Work Item Template, & Staging Isolation** |
+| v13.3 | Enterprise Production Grade & Governance | Role Matrix (Lead, Supervisor, Contributor), PR/Issue Template |
+| **v13.4** | **Production Hardened & CI-Ready Edition** | **Evaluasi Komprehensif Claude: .env.example, task.md, ci.yml, CODEOWNERS, Parser Fix, Security Headers, Relative Packaging** |
 
 ---
 
@@ -87,10 +87,10 @@ flowchart TD
 
 | Perintah | Deskripsi Tindakan Agen |
 |---|---|
-| `pigo run` | Jalankan instruksi dengan kepatuhan penuh framework v13.3 |
+| `pigo run` | Jalankan instruksi dengan kepatuhan penuh framework v13.4 |
 | `pigo fix` | Analisis error log, perbaiki kode, dan uji sintaks otonom |
 | `pigo test` | Lakukan validasi sintaks dan cek anti-regresi pada berkas yang disentuh |
-| `pigo sync` | Perbarui status checklist `working.md` dan `task.md` |
+| `pigo sync` | Perbarui status checklist `.agents/working.md` dan `.agents/task.md` |
 | `pigo audit` | Jalankan checklist Anti-Bypass, Pre-Commit Secret Scan, dan Anti-IDOR |
 | `pigo pack` | Bersihkan artefak dan kemas rilis live production (`build_upload.ps1`) |
 
@@ -100,10 +100,10 @@ flowchart TD
 
 | Rilis | Berkas Arsip | Hash SHA256 |
 |---|---|---|
-| **v13.3 + Enterprise Collab** | `model_kerja_v13.3_enterprise_collaboration.zip` | `9EAE679AA078A6ECDD253EC986BEBB61CA4DBB0471A14392D89633069FE09A6F` |
+| **v13.4** | `model_kerja_v13.4_production_ci_ready.zip` | `4897033A1EDA97B90DDE80AE436FF09CABC9B0C086810FCF3D3FBF105B2FD030` |
+| v13.3 + Collab | `model_kerja_v13.3_enterprise_collaboration.zip` | `9EAE679AA078A6ECDD253EC986BEBB61CA4DBB0471A14392D89633069FE09A6F` |
 | v13.3 | `model_kerja_v13.3_enterprise_production.zip` | `580DE45132DFBDA305FF7F4E665BEE4A3F9029397715D3BDC848DDD31C497B98` |
 | v13.2 | `model_kerja_v13.2_production_hardened.zip` | `2D518C105C3B19F6863E8C5B1B43BA5D4D61C937E1E0B0C2A5CE33F43D371D5D` |
-| v13.1 | `model_kerja_v13.1_battle_tested.zip` | `FDD69A81791FA804FD115A9F9FE6E8894AE4D3EDF4268D0CF061D7A5B8960E18` |
 
 ---
 *Dikelola dan dikembangkan oleh [@ipalalloi](https://github.com/ipalalloi)*
