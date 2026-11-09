@@ -2,17 +2,20 @@ name: PiGO Framework CI Pipeline
 
 on:
   push:
-    branches: [ staging, main ]
+    branches: [staging, main]
   pull_request:
-    branches: [ staging, main ]
+    branches: [staging, main]
+
+permissions:
+  contents: read
 
 jobs:
   syntax-validation:
-    name: PHP Syntax Check (Zero-Error)
+    name: PHP Syntax Check (Fail-Closed)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup PHP Environment
         uses: shivammathur/setup-php@v2
@@ -20,29 +23,51 @@ jobs:
           php-version: '8.2'
 
       - name: Validate All PHP Files Syntax
+        shell: bash
         run: |
-          echo "Memulai pemeriksaan sintaks seluruh berkas PHP..."
-          find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \; | grep -v "No syntax errors" || true
+          set -euo pipefail
+          echo 'Validating PHP syntax (including paths with spaces)'
+          find . -type f -name '*.php' -not -path './vendor/*' -print0 |
+            xargs -0 -r -n 1 php -l
 
   zero-leakage-check:
     name: Zero-Leakage & Secret Scanning
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Run Gitleaks Secret Scanner
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
+          GITLEAKS_ENABLE_COMMENTS: 'false'
 
-      - name: Verify No Secrets Staged
+      - name: Verify No Tracked Sensitive Filenames
+        shell: bash
         run: |
-          if git ls-files | grep -E "^\.env$|\.env\..*|credentials\.json$|id_rsa|\.key$|\.pem$"; then
-            echo "ERROR [Zero-Leakage]: Berkas kredensial rahasia terdeteksi dalam repositori!"
+          set -euo pipefail
+          filelist="$(mktemp)"
+          trap 'rm -f "$filelist"' EXIT
+          git ls-files -z > "$filelist"
+          found=0
+          while IFS= read -r -d '' path; do
+            filename="${path##*/}"
+            case "$filename" in
+              .env|.env.*|credentials.json|id_rsa*|*.key|*.pem)
+                case "$filename" in
+                  .env.example|.env.sample|.env.template|.env.dist)
+                    continue
+                    ;;
+                esac
+                echo "::error::Tracked sensitive filename: $path"
+                found=1
+                ;;
+            esac
+          done < "$filelist"
+          if ((found)); then
             exit 1
           fi
-          echo "OK: Repositori bersih dari berkas rahasia."
+          echo 'No tracked sensitive filenames found'
