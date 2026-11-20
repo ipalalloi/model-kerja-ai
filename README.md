@@ -1,4 +1,4 @@
-# PiGO Framework — Enterprise AI & Unified PiGO x PICO v4.2 Governance
+﻿# PiGO Framework — Enterprise AI & Unified PiGO x PICO v4.2 Governance
 
 **Palalloi Integrate Gravity Orchestra (v14.0 Enterprise — Berlaku Efektif: 20 November 2026)** | Production AI Agent Governance, Cross-Platform PICO v4.2 Collaboration Bridge & Team Engineering Ecosystem
 
@@ -130,7 +130,7 @@ Seluruh referensi eksternal telah diaudit dengan prinsip **"Adaptasi Lebih Diuta
 
 | Rilis | Berkas Arsip | Hash SHA256 |
 |---|---|---|
-| **v14.0** | `model_kerja_v14.0_unified_pigo_pico.zip` | `5A2447E6363E8883B03AA5767E544AC35282A046261E6611E73C411387A0F867` |
+| **v14.0** | `model_kerja_v14.0_unified_pigo_pico.zip` | `EEA15459416920BD353BDDFFC60E0499D63EDF99379F4B24F13A4364175C0183` |
 | v13.4 | `model_kerja_v13.4_production_ci_ready.zip` | `4897033A1EDA97B90DDE80AE436FF09CABC9B0C086810FCF3D3FBF105B2FD030` |
 | v13.3 + Collab | `model_kerja_v13.3_enterprise_collaboration.zip` | `9EAE679AA078A6ECDD253EC986BEBB61CA4DBB0471A14392D89633069FE09A6F` |
 

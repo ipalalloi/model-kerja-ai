@@ -1,63 +1,70 @@
-﻿---
+---
 name: pigo-shortcuts
 description: >-
-  Mendeteksi dan mengeksekusi pintasan instruksi singkat PiGO (pigo run, pigo fix, pigo pack, pigo test, pigo sync, pigo audit).
-  Aktifkan skill ini ketika pengguna mengetik kata kunci singkat seperti "pigo", "pigo run", "pigo fix", "pigo pack", "pigo test", "pigo sync", "pigo audit", "lanjutkan", atau perintah semi-otonom lainnya.
+  Mendeteksi dan mengeksekusi pintasan instruksi singkat PiGO v14.0 (pigo run, pigo fix, pigo pack, pigo test, pigo sync, pigo audit, pigo kajian).
+  Aktifkan skill ini ketika pengguna mengetik kata kunci singkat seperti "pigo", "pigo run", "pigo fix", "pigo pack", "pigo test", "pigo sync", "pigo audit", "pigo kajian", "lanjutkan", atau perintah semi-otonom lainnya.
 ---
 
-# PiGO Shortcuts & Semi-Autonomous Command Engine
+# PiGO Shortcuts & Semi-Autonomous Command Engine (v14.0)
+*Berlaku Efektif: 20 November 2026 — Unified PiGO x PICO v4.2 Governance*
 
-Dokumen ini memetakan kata kunci pintasan (*shortcuts*) singkat pengguna menjadi tindakan teknis otonom penuh berdasarkan pedoman PiGO Framework v10.0.
+Dokumen ini memetakan kata kunci pintasan (*shortcuts*) singkat pengguna menjadi tindakan teknis otonom penuh berdasarkan pedoman **PiGO Framework v14.0**.
+
+> **WAJIB DI SETIAP RESPONS:**
+> - **Header Pembuka**: `> 🛡️ **PiGO Framework v14.0** *(Berlaku: 20 November 2026)* | **Governance:** PIOM-SDCM v0.9 · PICO v4.2 Bridge`
+> - **Footer Penutup**: `⚡ **PiGO v14.0 Active** *(Eff: 20 Nov 2026)* · **Verifikasi:** <Lolos/Sebagian/Belum> · **Wadah:** <Proyek> · **Status:** <Status>`
 
 ---
 
 ## ⚡ Daftar Pintasan Cepat (Shortcuts Mapping)
 
-Jika pengguna mengetik kata kunci berikut, agen AI WAJIB langsung mengeksekusi alur kerjanya secara mandiri:
-
-### 1. `pigo run` atau `lanjut`
-* **Artinya**: Lanjutkan pekerjaan terakhir yang belum selesai.
+### 1. `pigo run` atau `pigo run [tugas baru]` atau `lanjut`
+* **Artinya**:
+  - Tanpa argumen: Lanjutkan pekerjaan aktif terakhir yang tertunda di `.agents/task.md` dan `.agents/working.md`.
+  - Dengan argumen: Daftarkan ke `.agents/task.md` sebagai `<active_task>` dan langsung eksekusi dengan prinsip **Perubahan Terkecil yang Lengkap** & **Anti-Slop**.
 * **Tindakan Otonom AI**:
-  1. Baca `working.md` pada blok `<in_progress>`.
-  2. Lanjutkan langkah berikutnya tanpa bertanya ulang.
-  3. Lakukan pengujian sintaks (`php -l`) dan verifikasi fungsionalitas.
-  4. Perbarui status `working.md` di akhir giliran.
+  1. Baca `.agents/working.md` dan `.agents/task.md`.
+  2. Eksekusi tugas sesuai standar v14.0 (Server-Side Schema Validation, Role-Aware Anti-IDOR, CSRF, Zero-Leakage).
+  3. Jalankan Gerbang Verifikasi: uji sintaks berkas yang disentuh via CLI (`php -l` / `tsc --noEmit`) pada sesi ini hingga 0 gagal.
+  4. Perbarui status tugas di `.agents/task.md` dan `.agents/working.md`.
 
 ### 2. `pigo fix [isu/pesan error]`
-* **Artinya**: Perbaiki bug atau error tertentu secara mandiri (*Loop-Resolution*).
+* **Artinya**: Perbaiki bug atau error tertentu secara mandiri (*Smallest Complete Fix*).
 * **Tindakan Otonom AI**:
-  1. Cari lokasi file penyebab error (gunakan grep_search / view_file).
-  2. Perbaiki kode dengan prinsip *Zero-Regression* (tidak merusak fungsi yang sudah ada).
-  3. Uji ulang sampai error hilang.
-  4. Laporkan perbaikan secara ringkas kepada pengguna.
+  1. Cari lokasi baris penyebab error secara presisi.
+  2. Perbaiki logika internal tanpa merusak signature publik dan tanpa merapikan kode sekitar yang tidak berkaitan.
+  3. Uji ulang gejala awal pada sesi ini hingga terbukti hilang (maksimal 5x retry sebelum eskalasi).
 
-### 3. `pigo pack`
-* **Artinya**: Buat paket rilis live bersih untuk deployment server.
+### 3. `pigo test`
+* **Artinya**: Jalankan Gerbang Verifikasi Berbasis Bukti (*Verification Gate*).
 * **Tindakan Otonom AI**:
-  1. Jalankan script `build_upload.ps1`.
-  2. Ambil hash SHA256 dari paket ZIP yang dihasilkan.
-  3. Catat versi rilis baru dan SHA256 tersebut ke dalam `RELEASE_MANIFEST.md`.
-  4. Laporkan nama file zip rilis dan hash-nya ke pengguna.
+  1. Jalankan uji sintaks CLI (`php -l`, `tsc --noEmit`, `pytest`) pada sesi ini dan tampilkan buktinya.
+  2. Verifikasi ketiadaan variabel tak terinisialisasi dan kepatuhan Anti-IDOR.
+  3. Nyatakan status verifikasi secara jujur (`Lolos` atau `Sebagian` jika DB lokal tidak aktif). Ingat: `GATE_CHECK: PASS != OWNER GO`.
 
-### 4. `pigo test`
-* **Artinya**: Jalankan inspeksi dan pengujian menyeluruh pada kode proyek.
+### 4. `pigo audit`
+* **Artinya**: Audit keamanan produksi, Anti-Slop, atau audit skill pihak ketiga.
 * **Tindakan Otonom AI**:
-  1. Lakukan audit sintaks pada seluruh file PHP yang baru diubah (`php -l`).
-  2. Verifikasi tidak ada variabel yang belum diinisialisasi (seperti `$approvalRows`).
-  3. Pastikan penanganan error PDO terlindungi dalam `try-catch`.
-  4. Laporkan hasil audit: apakah sistem siap produksi atau ada yang perlu diperbaiki.
+  1. Pindai `git diff --cached` dengan regex Zero-Leakage (pastikan tidak ada `.env` / password / API key mentah).
+  2. Periksa HTTP Security Headers di `.htaccess`, Role-Aware Anti-IDOR, dan CSRF token.
+  3. Bila mengaudit skill/plugin pihak ketiga, ikuti prosedur `C:\Users\IPalalloi\.gemini\config\skills\pico\references\audit-skill.md` dan cek `katalog-skill.md`.
 
-### 5. `pigo sync`
-* **Artinya**: Sinkronkan status memori proyek saat ini.
+### 5. `pigo kajian [topik]`
+* **Artinya**: Siapkan atau kerjakan **PAKET KAJIAN** lintas-agen (jembatan kolaborasi PiGO x PICO v4.2).
 * **Tindakan Otonom AI**:
-  1. Periksa file apa saja yang baru dimodifikasi.
-  2. Sinkronkan dan perbarui blok `<completed_tasks>` dan `<in_progress>` di `working.md`.
-  3. Tampilkan ringkasan singkat status proyek saat ini.
+  1. Baca `C:\Users\IPalalloi\.gemini\config\skills\pico\references\paket-kajian.md` dan `templates\PAKET-KAJIAN.md`.
+  2. Saring data sensitif (jangan sertakan kredensial, data responden, atau draf belum terbit tanpa izin).
+  3. Verifikasi setiap sitasi dengan DOI/URL (tandai `[BELUM TERVERIFIKASI]` bila ragu) sesuai `kaidah-akademik.md`.
+  4. Tutup respons dengan baris **`Log PICO`** untuk ditempel ke PICO Monitor.
 
-### 6. `pigo audit`
-* **Artinya**: Pemeriksaan kepatuhan keamanan dan standar arsitektur 6 pilar PiGO.
+### 6. `pigo sync`
+* **Artinya**: Sinkronkan status memori proyek (*Maintenance Session* — tanpa membuat ZIP baru).
 * **Tindakan Otonom AI**:
-  1. Periksa ketiadaan hardcoded kredensial di kode.
-  2. Periksa keberadaan `.htaccess` di folder `uploads/` dan folder sensitif.
-  3. Periksa validasi upload file (apakah sudah menggunakan `finfo_file()`).
-  4. Berikan checklist kepatuhan PiGO v10.0.
+  1. Perbarui `.agents/working.md` dan `.agents/task.md` sesuai kondisi komit/berkas terbaru.
+  2. Deteksi tugas yang macet $\ge 2$ sesi (`stalled=true`) untuk dilaporkan ke pengguna.
+
+### 7. `pigo pack`
+* **Artinya**: Kemas paket rilis live produksi bersih (*Evidence Session*).
+* **Tindakan Otonom AI**:
+  1. Jalankan `.\build_upload.ps1`.
+  2. Pastikan hash SHA256 otomatis tercatat ke `RELEASE_MANIFEST.md` dan laporkan ke pengguna.
