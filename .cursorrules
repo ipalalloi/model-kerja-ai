@@ -1,0 +1,8 @@
+﻿# PiGO Framework v14.1 — Cursor & Cross-IDE Bootstrap Rule
+# Berlaku Efektif: 25 November 2026
+
+Sebelum mengeksekusi tugas apa pun di repositori ini, Anda WAJIB:
+1. Membaca dan mematuhi seluruh konstitusi di `AGENTS.md` (PiGO Framework v14.1).
+2. Membaca memori sesi di `.agents/working.md` dan daftar tugas di `.agents/task.md`.
+3. Menyertakan Header Pembuka (`PiGO Framework v14.1 — Berlaku: 25 November 2026`) dan Footer Verifikasi pada setiap respons sesuai Bab 1 `AGENTS.md`.
+4. Mematuhi prinsip Perubahan Terkecil yang Lengkap, Anti-Slop, Keamanan Apache + Nginx (`nginx.conf.example`), Kepatuhan UU No. 27/2022 PDP, serta Gerbang Verifikasi Berbasis Bukti.

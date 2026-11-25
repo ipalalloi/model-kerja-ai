@@ -1,63 +1,80 @@
-# ==============================================================================
-# PiGO Framework Auto-Sync & Release Tool
-# Menjamin seluruh template lokal, repositori GitHub, deskripsi About, dan hash SHA256
-# selalu sinkron 100% tanpa risiko ketinggalan versi manual.
+﻿# ==============================================================================
+# PiGO Framework Auto-Sync & Release Tool (v14.1+)
+# Menjamin seluruh template lokal, proyek aktif, Global Rules/Skills, repositori GitHub,
+# deskripsi About, dan hash SHA256 selalu sinkron 100%.
 # ==============================================================================
 
 param(
-    [string]$Version = "v13.3",
-    [string]$ReleaseTitle = "Enterprise Production & Multi-Tier Collaboration"
+    [string]$Version = "v14.1",
+    [string]$ReleaseTitle = "Gemini 4 Carbon Orchestrator, UU PDP & PRF 11-Review Engine"
 )
 
+$ErrorActionPreference = "Stop"
 Write-Host ">>> Memulai Sinkronisasi PiGO Framework $Version ($ReleaseTitle)..." -ForegroundColor Cyan
 
 $baseDir = "D:\AI-Work-Teams\antigravity\model-kerja-ai"
 $templateDir = "D:\Data_web\spmi_pemetaan_app\_project_template"
-$zipPath = "D:\AI-Work-Teams\antigravity\model_kerja_${Version}_release.zip"
+$globalRules = "C:\Users\IPalalloi\.gemini\config\rules"
+$globalSkills = "C:\Users\IPalalloi\.gemini\config\skills"
+$zipPath = "D:\AI-Work-Teams\antigravity\model_kerja_${Version}_carbon_orchestrator_prf.zip"
 
-# 1. Kompresi Master Template
-Write-Host ">>> Membuat arsip ZIP rilis master..." -ForegroundColor Yellow
+# 1. Sinkronkan Skills & Template Internal
+Copy-Item "$templateDir\AGENTS.md" -Destination "$templateDir\.agents\AGENTS.md" -Force
+foreach ($sk in @("pico", "pigo-shortcuts")) {
+    if (Test-Path "$templateDir\.agents\skills\$sk") { Remove-Item "$templateDir\.agents\skills\$sk" -Recurse -Force }
+    Copy-Item "$globalSkills\$sk" -Destination "$templateDir\.agents\skills\$sk" -Recurse -Force
+}
+
+# 2. Kompresi Master Template
+if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
 Compress-Archive -Path "$templateDir\*" -DestinationPath $zipPath -Force
 $sha256 = (Get-FileHash $zipPath -Algorithm SHA256).Hash
 Write-Host ">>> SHA256 Hash: $sha256" -ForegroundColor Green
 
-# 2. Sinkronisasi ke Proyek Lokal
-$projects = @("D:\Data_web\spmi_pemetaan_app", "D:\Data_web\SIMPEL", "D:\Data_web\simulasi_al")
+# 3. Sinkronisasi ke Proyek Lokal Aktif
+$projects = @(
+    "D:\Data_web\spmi_pemetaan_app",
+    "D:\Data_web\SIMPEL",
+    "D:\Data_web\simulasi_al",
+    "D:\Data_web\PiGO Nexus"
+)
 foreach ($p in $projects) {
     if (Test-Path $p) {
         $agentsDir = Join-Path $p ".agents"
-        $githubDir = Join-Path $p ".github"
-        $issueDir = Join-Path $githubDir "ISSUE_TEMPLATE"
-        
         if (-not (Test-Path $agentsDir)) { New-Item -ItemType Directory -Path $agentsDir -Force | Out-Null }
-        if (-not (Test-Path $issueDir)) { New-Item -ItemType Directory -Path $issueDir -Force | Out-Null }
-        
-        Copy-Item "$templateDir\.agents\AGENTS.md" -Destination (Join-Path $agentsDir "AGENTS.md") -Force
-        Copy-Item "$templateDir\COLLABORATION_GUIDE.md" -Destination (Join-Path $p "COLLABORATION_GUIDE.md") -Force
-        Copy-Item "$templateDir\.github\PULL_REQUEST_TEMPLATE.md" -Destination (Join-Path $githubDir "PULL_REQUEST_TEMPLATE.md") -Force
-        Copy-Item "$templateDir\.github\ISSUE_TEMPLATE\task-template.md" -Destination (Join-Path $issueDir "task-template.md") -Force
+        Copy-Item "$templateDir\AGENTS.md" -Destination (Join-Path $p "AGENTS.md") -Force
+        Copy-Item "$templateDir\AGENTS.md" -Destination (Join-Path $agentsDir "AGENTS.md") -Force
+        Copy-Item "$templateDir\.cursorrules" -Destination (Join-Path $p ".cursorrules") -Force
+        Copy-Item "$templateDir\nginx.conf.example" -Destination (Join-Path $p "nginx.conf.example") -Force
         Write-Host "    [OK] Proyek tersinkronisasi: $p" -ForegroundColor Gray
     }
 }
 
-# 3. Sinkronkan Global Rule Enforcer
-$globalRule = "C:\Users\IPalalloi\.gemini\config\rules\global-compliance-checker.md"
-Copy-Item "$templateDir\.agents\AGENTS.md" -Destination $globalRule -Force
-Write-Host "    [OK] Global Enforcer tersinkronisasi: $globalRule" -ForegroundColor Gray
+# 4. Sinkronkan Repositori Git model-kerja-ai
+Push-Location $baseDir
+try {
+    Copy-Item "$templateDir\AGENTS.md" -Destination "$baseDir\AGENTS.md" -Force
+    Copy-Item "$templateDir\.cursorrules" -Destination "$baseDir\.cursorrules" -Force
+    Copy-Item "$templateDir\nginx.conf.example" -Destination "$baseDir\nginx.conf.example" -Force
+    Copy-Item "$globalRules\global-compliance-checker.md" -Destination "$baseDir\rules\pigo-global.md" -Force
+    Copy-Item "$globalRules\pico.md" -Destination "$baseDir\rules\pico.md" -Force
+    foreach ($sk in @("pico", "pigo-shortcuts")) {
+        if (Test-Path "$baseDir\skills\$sk") { Remove-Item "$baseDir\skills\$sk" -Recurse -Force }
+        Copy-Item "$globalSkills\$sk" -Destination "$baseDir\skills\$sk" -Recurse -Force
+    }
 
-# 4. Sinkronkan Repositori Git & Commit
-cd $baseDir
-Copy-Item "$templateDir\.agents\AGENTS.md" -Destination "$baseDir\AGENTS.md" -Force
-Copy-Item "$templateDir\COLLABORATION_GUIDE.md" -Destination "$baseDir\COLLABORATION_GUIDE.md" -Force
-Copy-Item "$templateDir\.github\PULL_REQUEST_TEMPLATE.md" -Destination "$baseDir\.github\PULL_REQUEST_TEMPLATE.md" -Force
-Copy-Item "$templateDir\.github\ISSUE_TEMPLATE\task-template.md" -Destination "$baseDir\.github\ISSUE_TEMPLATE\task-template.md" -Force
+    $readme = Get-Content "$baseDir\README.md" -Raw -Encoding UTF8
+    $readme = $readme -replace '\{\{V14_1_SHA256\}\}', $sha256
+    [System.IO.File]::WriteAllText("$baseDir\README.md", $readme, (New-Object System.Text.UTF8Encoding($false)))
 
-git add -A
-git commit -m "chore(sync): automated sync for PiGO Framework $Version ($ReleaseTitle) - SHA256: $sha256"
-git push origin main
+    git add -A
+    git commit -m "feat($Version): release PiGO Framework $Version — $ReleaseTitle (SHA256: $sha256)"
+    git push origin main
 
-# 5. Update GitHub Metadata (About & Topics)
-$desc = "PiGO Framework $Version Enterprise — Multi-Tier AI Agent Governance, Production Security Hardening & Collaborative Team Engineering Ecosystem (Lead, Supervisor, Contributor)"
-gh repo edit ipalalloi/model-kerja-ai --description "$desc" --add-topic "ai-agents" --add-topic "ai-governance" --add-topic "software-engineering" --add-topic "team-collaboration" --add-topic "antigravity" --add-topic "gemini" --add-topic "claude" --add-topic "pigo-framework"
+    $desc = "PiGO Framework $Version Enterprise (Eff: 25 Nov 2026) — Gemini 4 Carbon Multi-Agent Orchestrator, Apache/Nginx & UU PDP Security, PICO v4.2 & PRF 11-Review Academic Engine"
+    gh repo edit ipalalloi/model-kerja-ai --description "$desc" --add-topic "literature-review" --add-topic "multi-agent-orchestration"
+} finally {
+    Pop-Location
+}
 
 Write-Host ">>> Selesai! Seluruh ekosistem PiGO Framework $Version telah sinkron 100%!" -ForegroundColor Green

@@ -1,0 +1,42 @@
+# ==============================================================================
+# PiGO Framework v14.1 — Nginx Security Snippet (nginx.conf.example)
+# Pasang aturan ini di dalam blok server { ... } (HTTP & HTTPS / belakang Varnish)
+# karena Nginx TIDAK membaca berkas .htaccess Apache!
+# ==============================================================================
+
+# 1. Security Headers Modern
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
+
+# 2. Blokir Berkas Tersembunyi & Konfigurasi (.env, .git, .agents, .cursorrules)
+location ~ /\.(?!well-known) {
+    deny all;
+    return 404;
+}
+
+# 3. Blokir Direktori Internal Aplikasi
+location ~* ^/(config|src|migrations|vendor|docs|logs|scratch|_ai_context)/ {
+    deny all;
+    return 404;
+}
+
+# 4. Blokir Dump Database, Arsip, Manifest & Markdown Internal
+location ~* \.(sql|bak|old|log|rar|zip|md|ps1|sh|lock)$ {
+    deny all;
+    return 404;
+}
+
+# 5. Kepatuhan UU PDP: Blokir Akses Langsung Dokumen Pribadi & Eksekusi Script di Uploads
+# Penyajian dokumen pengguna WAJIB melalui endpoint terautentikasi (mis. berkas.php / cetak_pdf.php)
+location ~* ^/(uploads|pdf)/.*\.(php|phar|phtml|pl|py|sh|cgi)$ {
+    deny all;
+    return 404;
+}
+
+# Aktifkan blok di bawah ini untuk memaksa seluruh dokumen privat melewati gated controller:
+# location ~* ^/(uploads/(warga|permohonan|dokumen_privat)|pdf)/ {
+#     deny all;
+#     return 404;
+# }
